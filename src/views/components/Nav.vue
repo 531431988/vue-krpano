@@ -2,7 +2,7 @@
 <van-goods-action>
   <div class="tc" @click="onClick">
     <van-icon class="scene-btn" name="wap-nav" size="6vw" color="#fff" />
-    <p>场景选择</p>
+    <p>切换场景</p>
   </div>
   <div class="vui-flex-item tr">
     <div class="vui-flex vui-flex-right">

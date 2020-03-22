@@ -6,15 +6,17 @@
     <transition name="van-slide-up">
       <PanoList v-if="show" />
     </transition>
+    <Sidebar />
   </div>
 </template>
 
 <script>
 import { Krpano } from '@/components'
-import { Nav, PanoList } from './components'
+import { Sidebar, Nav, PanoList } from './components'
 export default {
   components: {
     Krpano,
+    Sidebar,
     Nav,
     PanoList
   },
