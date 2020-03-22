@@ -1,0 +1,95 @@
+
+.vui-flex {
+  display: flex;
+}
+.vui-flex-ver {
+  box-orient: vertical;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.vui-flex-item {
+  flex: 1;
+}
+
+/* 主轴(X)方向 （排列方向） */
+.vui-flex-dir-left {
+  /* 默认值 主轴为水平方向，起点在左端 */
+  flex-direction: row;
+}
+.vui-flex-dir-right {
+  /* 主轴为水平方向，起点在右端 */
+  flex-direction: row-reverse;
+}
+.vui-flex-dir-top {
+  /* 主轴为垂直方向，起点在上端 */
+  flex-direction: column;
+}
+.vui-flex-dir-bottom {
+  /* 主轴为垂直方向，起点在下沿 */
+  flex-direction: column-reverse;
+}
+
+/* 主轴上的对齐方式 */
+.vui-flex-left {
+  /* 默认值 左对齐 */
+  justify-content: flex-start;
+}
+.vui-flex-right {
+  /* 右对齐 */
+  justify-content: flex-end;
+}
+.vui-flex-center {
+  /* 居中 */
+  justify-content: center;
+}
+.vui-flex-between {
+  /* 两端对齐，项目之间的间隔都相等 */
+  justify-content: space-between;
+}
+.vui-flex-around {
+  /* 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍 */
+  justify-content: space-around;
+}
+
+
+/* 项目在交叉轴(Y)上如何对齐 */
+.vui-flex-top {
+  /* 交叉轴的起点对齐  即Y轴顶对齐 */
+  align-items: flex-start;
+}
+.vui-flex-bottom {
+  /* 交叉轴的终点对齐 即Y轴底对齐 */
+  align-items: flex-end;
+}
+.vui-flex-middle {
+  /* 交叉轴的中点对齐 即Y轴居中对齐 */
+  align-items: center;
+}
+.vui-flex-baseline {
+  /* 项目的第一行文字的基线(底)对齐 */
+  align-items: baseline;
+}
+.vui-flex-stretch {
+  /* 如果项目未设置高度或设为auto，将占满整个容器的高度 (两端对齐) */
+  align-items: stretch;
+}
+
+
+/* 默认情况下，项目都排在一条线（又称"轴线"）上。
+  flex-wrap属性定义，如果一条轴线排不下，如何换行。
+ */
+.vui-flex-nowrap {
+  /* 不换行 */
+  flex-wrap: nowrap;
+}
+.vui-flex-wrap {
+  /* 换行，第一行在上方 */
+  flex-wrap: wrap;
+}
+.vui-flex-reverse {
+  /* 换行，第一行在下方 */
+  flex-wrap: wrap-reverse;
+}

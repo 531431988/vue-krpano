@@ -1,0 +1,11 @@
+﻿<krpano>
+
+	<!-- looking direction -->
+	<view fov="90" fovmax="130" hlookat="-50" vlookat="-3" />
+
+	<!-- pano -->
+	<preview url="./preview.jpg" />
+	<image>
+		<cube url="./pano_%s.jpg" />
+	</image>
+</krpano>
