@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+}
+p {
+  margin: 0;
+}
+#app {
+  /deep/ .van-button--normal {
+    padding: 0 30px;
+  }
+  /deep/ .van-button--small {
+    padding: 0 16px;
+  }
+  /deep/ .van-dropdown-menu__title {
+    &:after {
+      font-size: 24px;
+      font-family: 'vant-icon';
+      content: '\F0A1';
+      border: none;
+      transform: rotate(90deg) translateX(-50%);
+      right: -10px;
+    }
+    &.van-dropdown-menu__title--active {
+      &:after {
+        transform: rotate(-90deg) translateX(50%);
+      }
+    }
+  }
+  .van-tabs {
+    z-index: 1;
+    /deep/ .van-tab {
+      font-size: 30px;
+    }
+    /deep/ .van-tabs__line {
+      bottom: 16px;
+    }
+  }
+  /deep/ .van-dropdown-menu {
+    margin-top: -1px;
+  }
+  .van-search {
+    /deep/ .van-field__control {
+      height: 60px;
+    }
+    /deep/ .van-icon-search {
+      margin-top: 8px;
+    }
+  }
+  /deep/ .van-panel {
+    .van-cell__title {
+      font-size: 34px;
+      font-weight: 700;
+    }
+  }
+  /deep/ .van-nav-bar {
+    .van-nav-bar__title {
+      font-size: 34px;
+      font-weight: 700;
+    }
+  }
+}

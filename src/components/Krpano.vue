@@ -11,39 +11,6 @@ export default {
     },
     bgcolor: {
       type: String
-    },
-    wmode: {
-      type: String, default: "opaque"
-    },
-    vars: {
-      type: Object
-    },
-    initvars: {
-      type: Object
-    },
-    basepath: {
-      type: String
-    },
-    mwheel: {
-      type: Boolean, default: false
-    },
-    focus: {
-      type: Boolean, default: true
-    },
-    consolelog: {
-      type: Boolean, default: false
-    },
-    mobilescale: {
-      type: Number, default: 0.5
-    },
-    fakedevice: {
-      type: String
-    },
-    passQueryParameters: {
-      type: Boolean, default: false
-    },
-    webglsettings: {
-      type: Object
     }
   },
   data () {
@@ -55,13 +22,13 @@ export default {
   watch: {
     xml (newXml) {
       if (this.krpano && newXml) {
-        this.krpano.call(`loadpano(${newXml},null,IGNOREKEEP)`);
-        this.$emit("xmlChanged", newXml);
-        this.log("xml changed: " + newXml);
+        this.krpano.call(`loadpano(${newXml},null,IGNOREKEEP)`)
+        this.$emit('xmlChanged', newXml)
+        this.log(`xml changed: ${newXml}`)
       }
     },
     scene: function () {
-      this.loadScene();
+      this.loadScene()
     }
   },
   computed: {
@@ -71,67 +38,66 @@ export default {
   },
   methods: {
     createPano () {
-      const { embedpano, removepano } = window;
+      const { embedpano, removepano } = window
       if (!(embedpano && removepano)) {
-        throw new Error("krpano player is required");
+        throw new Error('krpano player is required')
       }
       if (!this.createLock) {
-        this.createLock = true;
+        this.createLock = true
         embedpano({
           swf: './public/krpano/krpano.swf',
           id: `${this.id}-obj`,
           xml: this.xml,
           target: this.id,
           consolelog: true,
+          mwheel: true,
           passQueryParameters: true,
           html5: 'auto',
           onready: this.krpanoOnreadyCallback
-        });
+        })
       }
     },
     krpanoOnreadyCallback (krpano) {
       this.krpano = krpano
-      this.krpano.hooks = this.hooks;
-      this.log('创建成功');
-      this.$emit("panoCreated", this.krpano);
-      this.createLock = false;
-      console.log(this.krpano)
+      this.krpano.hooks = this.hooks
+      this.log('创建成功')
+      this.$emit('init', this.krpano)
+      this.createLock = false
     },
     loadScene () {
-      let scene = this.scene;
+      let scene = this.scene
       if (this.krpano) {
         if (scene) {
           let str = `if(scene[${scene}]===null,
                         loadscene(get(scene[0].name),null,MERGE,BLEND(0.5)),
-                        loadscene(${scene},null,MERGE,BLEND(0.5)))`;
-          this.krpano.call(str);
-          this.log("scene changed: " + scene);
-          this.$emit("sceneChanged", scene);
-
+                        loadscene(${scene},null,MERGE,BLEND(0.5)))`
+          this.krpano.call(str)
+          this.log(`scene changed: ${scene}`)
+          this.$emit('sceneChanged', scene)
         } else {
-          this.krpano.call("loadscene(get(scene[0].name),null,MERGE,BLEND(0.5))");
+          this.krpano.call('loadscene(get(scene[0].name),null,MERGE,BLEND(0.5))')
         }
       }
     },
     log (content) {
       if (this.debug) {
         if (this.krpano) {
-          content = "[" + this.krpano.id + "] " + content;
+          content = `[${this.krpano.id}]${content}`
         }
-        console.debug(content);
+        console.debug(content)
       }
     }
   },
   mounted () {
+    console.log(this.show)
     this.createPano()
-    this.$on(["panoCreated", "xmlChanged"], this.loadScene);
+    this.$on(['init', 'xmlChanged'], this.loadScene)
   },
   beforeDestroy () {
-    this.$destroy(true)
-    const { removepano } = window;
+    const { removepano } = window
     if (this.krpano) {
-      removepano(this.krpano.id);
-      delete this.krpano;
+      removepano(this.krpano.id)
+      delete this.krpano
     }
   }
 }

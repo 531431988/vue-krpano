@@ -15,10 +15,10 @@ const err = (error) => {
     const data = error.response.data
     const token = Vue.ls.get(ACCESS_TOKEN)
     if (error.response.status === 403) {
-      Notify({ type: 'danger', message: data.message });
+      Notify({ type: 'danger', message: data.message })
     }
     if (error.response.status === 401 && !(data.result && data.result.isLogin)) {
-      Notify({ type: 'danger', message: 'Authorization verification failed' });
+      Notify({ type: 'danger', message: 'Authorization verification failed' })
       if (token) {
         store.dispatch('Logout').then(() => {
           setTimeout(() => {

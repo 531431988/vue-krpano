@@ -131,7 +131,7 @@ module.exports = {
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
-      patterns: [resolve('./src/theme.less')]
+      patterns: [resolve('./src/less/theme.less')]
     },
   },
   publicPath: process.env.VUE_APP_PUBLIC_PATH,

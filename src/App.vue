@@ -7,7 +7,7 @@
 export default {
 }
 </script>
-<style lang="less" scoped>
+<style lang="less">
 #app {
   height: 100vh;
 }
