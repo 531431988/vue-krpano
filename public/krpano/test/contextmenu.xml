@@ -1,0 +1,76 @@
+﻿<!--
+	krpano - contextmenu example
+	- customize the context menu
+	- add a setting for changing the control mode
+	- add settings for changing the viewing projection
+	- add a logo image (html code) into the contextmenu (HTML5 only)
+-->
+<krpano>
+	<!-- the contextmenu -->
+	<contextmenu fullscreen="true" versioninfo="false">
+		<item name="kr" caption="光谷信息" onclick="openurl('http://baidu.com')"  />
+		<!-- <item name="fs" caption="全屏" /> -->
+		<item name="nv" caption="正常模式" onclick="cm_normal_view();" showif="view.vlookatrange == 180" separator="true"      />
+		<item name="fv" caption="鱼眼模式"       onclick="cm_fisheye_view();"       showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<item name="sv" caption="平视模式" onclick="cm_stereographic_view();" showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<item name="av" caption="建筑模式" onclick="cm_architectural_view();" showif="view.vlookatrange == 180"                       />
+		<!-- <item name="pv" caption="Pannini View" onclick="cm_pannini_view();" showif="view.vlookatrange == 180" devices="flash|webgl" /> -->
+		<item name="lp" caption="小行星" onclick="cm_littleplanet_view();"  showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<!-- <item name="logo" caption="calc:'[img src=[sq]'+network.currentxmlpath+'/krpano_logo.png[sq] style=[sq]width:90px; height:25px; margin:0px 0px -6px -2px;[sq] /]'" separator="true" onclick="openurl('http://krpano.com')" devices="html5" /> -->
+	</contextmenu>
+
+	<action name="cm_look_straight">
+		if(view.vlookat LT -80 OR view.vlookat GT +80,
+			tween(view.vlookat, 0.0, 1.0, easeInOutSine);
+			tween(view.fov,     100, distance(150,0.8));
+		  );
+	</action>
+
+	<action name="cm_normal_view">
+		cm_look_straight();
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       0.0, distance(1.0,0.5));
+	</action>
+
+	<action name="cm_architectural_view">
+		cm_look_straight();
+		tween(view.architectural, 1.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       0.0, distance(1.0,0.5));
+	</action>
+
+	<action name="cm_fisheye_view">
+		cm_look_straight();
+		tween(view.architectural, 0.0,  distance(1.0,0.5));
+		tween(view.pannini,       0.0,  distance(1.0,0.5));
+		tween(view.fisheye,       0.35, distance(1.0,0.5));
+	</action>
+
+	<action name="cm_stereographic_view">
+		cm_look_straight();
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       1.0, distance(1.0,0.8));
+	</action>
+
+	<action name="cm_pannini_view">
+		cm_look_straight();
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       1.0, distance(1.0,0.8));
+		if(view.fisheye LT 0.1,
+			tween(view.fisheye, 1.0, distance(1.0,0.8));
+		  );
+	</action>
+
+	<action name="cm_littleplanet_view">
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       1.0, distance(1.0,0.8));
+		tween(view.fov,           150, distance(150,0.8));
+		tween(view.vlookat,        90, distance(100,0.8));
+		add(new_hlookat, view.hlookat, 123.0);
+		tween(view.hlookat, get(new_hlookat), distance(100,0.8));
+	</action>
+
+</krpano>

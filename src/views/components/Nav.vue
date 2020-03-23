@@ -1,22 +1,22 @@
 <template>
-<van-goods-action>
-  <div class="tc" @click="onClick">
-    <van-icon class="scene-btn" name="wap-nav" size="6vw" color="#fff" />
-    <p>切换场景</p>
-  </div>
-  <div class="vui-flex-item tr">
-    <div class="vui-flex vui-flex-right">
-      <div class="tc mr30">
-        <van-icon class="scene-btn" name="good-job-o" size="6vw" color="#fff" />
-        <p>5</p>
-      </div>
-      <div class="tc">
-        <van-icon class="scene-btn" name="chat-o" size="6vw" color="#fff" />
-        <p>说一说</p>
+  <van-goods-action>
+    <div class="tc" @click="onClick">
+      <van-icon class="scene-btn" name="wap-nav" size="6vw" color="#fff" />
+      <p>切换场景</p>
+    </div>
+    <div class="vui-flex-item tr">
+      <div class="vui-flex vui-flex-right">
+        <div class="tc mr30">
+          <van-icon class="scene-btn" name="good-job-o" size="6vw" color="#fff" />
+          <p>5</p>
+        </div>
+        <div class="tc">
+          <van-icon class="scene-btn" name="chat-o" size="6vw" color="#fff" />
+          <p>说一说</p>
+        </div>
       </div>
     </div>
-  </div>
-</van-goods-action>
+  </van-goods-action>
 </template>
 <script>
 export default {
@@ -35,7 +35,7 @@ export default {
   background: transparent;
   z-index: 99;
   height: 120px;
-  .scene-btn{
+  .scene-btn {
     margin: auto;
     width: 56px;
     height: 56px;

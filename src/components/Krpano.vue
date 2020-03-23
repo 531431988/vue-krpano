@@ -46,14 +46,20 @@ export default {
         this.createLock = true
         embedpano({
           swf: './public/krpano/krpano.swf',
-          id: `${this.id}-obj`,
           xml: this.xml,
-          target: this.id,
-          consolelog: true,
-          mwheel: true,
+          target: this.id,  // 嵌入容器id
+          id: `${this.id}-obj`, // 当前全景id，javascript接口调用会使用此id
+          bgcolor: '#000000', // 背景颜色
+          html5: 'prefer',   // html5模式
+          // flash：'auto', // flash模式
+          // vars:{},// 在xml加载解析后设置启动变量
+          // initvars: {},// 在xml加载解析前设置启动变量，可以在地址进行查询（our.html?initvars.variable=value）
+          basepath: './',// 基本路径 （相对于krpano.swf）
+          consolelog: false,
+          mwheel: true,  // 是否启用鼠标滚轮
+          // 启用url查询参数（ html5, flash, wmode, mobilescale, fakedevice, initvars）作为变量传递，如tour.html?html5=only&startscene=scene2&initvars.design=flat
           passQueryParameters: true,
-          html5: 'prefer',
-          onready: this.krpanoOnreadyCallback
+          onready: this.krpanoOnreadyCallback  // 准备就绪回调函数
         })
       }
     },
