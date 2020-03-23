@@ -48,25 +48,21 @@ export default {
         case 'auto':
           // 设置自动旋转
           this.isAutoRotate = !this.isAutoRotate
-          krpano.set('autorotate.enabled', this.isAutoRotate);
-          krpano.set('autorotate.waittime', 1.5);
-          krpano.set('autorotate.speed', 10);
-          krpano.set('autorotate.accel', 1);
-          var hlookat = krpano.get("view.hlookat");
-          var vlookat = krpano.get("view.vlookat");
-          var fov = krpano.get("view.fov");
-          var distortion = krpano.get("view.distortion");
-          console.log(
-            'hlookat="' + hlookat.toFixed(2) + '" ' +
-            'vlookat="' + vlookat.toFixed(2) + '" ' +
-            'fov="' + fov.toFixed(2) + '" ' +
-            'distortion="' + distortion.toFixed(2) + '"')
+          krpano.set('autorotate.enabled', this.isAutoRotate)
+          krpano.set('autorotate.waittime', 1.5)
+          krpano.set('autorotate.speed', 10)
+          krpano.set('autorotate.accel', 1)
+          var hlookat = krpano.get('view.hlookat')
+          var vlookat = krpano.get('view.vlookat')
+          var fov = krpano.get('view.fov')
+          var distortion = krpano.get('view.distortion')
+          console.log(`hlookat="${hlookat.toFixed(2)}" vlookat="${vlookat.toFixed(2)}" fov="${fov.toFixed(2)}" distortion="${distortion.toFixed(2)}"`)
           break
         case 'fullscreen':
-          krpano.set('fullscreen', true);
+          krpano.set('fullscreen', true)
           break
         default:
-          break;
+          break
       }
     },
     onListClick (item, index) {
@@ -96,7 +92,7 @@ export default {
           //     alert(`hotspot ${hs} clicked`)
           //   }.bind(null, hs_name))
           // }
-          krpano.set("fov_moveforce", -1);
+          krpano.set('fov_moveforce', -1)
           krpano.set('hlookat_moveforce', 1)
           setTimeout(() => {
             krpano.set('fov_moveforce', 0)
@@ -104,7 +100,7 @@ export default {
             krpano.set('view.hlookat', 145)
             krpano.set('view.vlookat', 10)
             krpano.set('view.fov', 120)
-          }, 1500);
+          }, 1500)
         }
       }, 1000)
     }
