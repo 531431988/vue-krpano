@@ -3,7 +3,7 @@
     <van-icon name="qr" size="6vw" color="#fff" />
     <van-icon name="music-o" size="6vw" color="#fff" />
     <van-icon name="replay" size="6vw" color="#fff" @click="onClick('auto')" />
-    <van-icon name="expand-o" size="6vw" color="#fff" />
+    <!-- <van-icon name="expand-o" size="6vw" color="#fff" @click="onClick('fullscreen')" /> -->
   </div>
 </template>
 <script>

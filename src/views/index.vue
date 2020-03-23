@@ -1,12 +1,12 @@
 <template>
   <div class="krpano">
-    <Krpano @init="onInitKrpano" ref="krpano" :xml="xml" />
     <van-overlay :show="overlay" :custom-style="style" @click="onOverlayClick" />
     <Nav @on-click="onNavClick" />
     <transition name="van-slide-up">
-      <PanoList v-if="show" @on-click="onListClick" />
+      <PanoList :active="active" v-if="show" @on-click="onListClick" />
     </transition>
     <Sidebar @on-click="onSidebarClick" />
+    <Krpano @init="onInitKrpano" ref="krpano" :xml="xml" />
   </div>
 </template>
 
@@ -34,7 +34,8 @@ export default {
       show: false,
       xml: './krpano/balcony.xml',
       krpano: null,
-      isAutoRotate: false
+      isAutoRotate: false,
+      active: 0
     }
   },
   methods: {
@@ -42,17 +43,35 @@ export default {
       this.show = !this.show
     },
     onSidebarClick (name) {
-      // 设置自动旋转
-      this.isAutoRotate = !this.isAutoRotate
-      if (name === 'auto') {
-        this.krpano.set('autorotate.enabled', this.isAutoRotate);
-        this.krpano.set('autorotate.waittime', 1.5);
-        this.krpano.set('autorotate.speed', 10);
-        this.krpano.set('autorotate.accel', 2);
+      const { krpano } = this
+      switch (name) {
+        case 'auto':
+          // 设置自动旋转
+          this.isAutoRotate = !this.isAutoRotate
+          krpano.set('autorotate.enabled', this.isAutoRotate);
+          krpano.set('autorotate.waittime', 1.5);
+          krpano.set('autorotate.speed', 10);
+          krpano.set('autorotate.accel', 1);
+          var hlookat = krpano.get("view.hlookat");
+          var vlookat = krpano.get("view.vlookat");
+          var fov = krpano.get("view.fov");
+          var distortion = krpano.get("view.distortion");
+          console.log(
+            'hlookat="' + hlookat.toFixed(2) + '" ' +
+            'vlookat="' + vlookat.toFixed(2) + '" ' +
+            'fov="' + fov.toFixed(2) + '" ' +
+            'distortion="' + distortion.toFixed(2) + '"')
+          break
+        case 'fullscreen':
+          krpano.set('fullscreen', true);
+          break
+        default:
+          break;
       }
     },
-    onListClick (item) {
+    onListClick (item, index) {
       this.xml = `./${item.scene}.xml`
+      this.active = index
       // this.krpano.call(`loadpano(./${item.scene}.xml, null, MERGE, BLEND(0.5));`)
     },
     onOverlayClick () {
@@ -82,9 +101,10 @@ export default {
           setTimeout(() => {
             krpano.set('fov_moveforce', 0)
             krpano.set('hlookat_moveforce', 0)
+            krpano.set('view.hlookat', 145)
             krpano.set('view.vlookat', 10)
             krpano.set('view.fov', 120)
-          }, 5000);
+          }, 1500);
         }
       }, 1000)
     }
