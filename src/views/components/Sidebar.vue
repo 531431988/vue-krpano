@@ -20,7 +20,7 @@ export default {
   right: 0;
   pointer-events: none;
   padding: 15px;
-  z-index: 200;
+  z-index: 300;
   .van-icon{
     width: 72px;
     height: 72px;

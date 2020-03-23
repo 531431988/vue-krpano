@@ -8,4 +8,5 @@
 	<image>
 		<cube url="./pano_%s.jpg" />
 	</image>
+
 </krpano>

@@ -52,14 +52,13 @@ export default {
           consolelog: true,
           mwheel: true,
           passQueryParameters: true,
-          html5: 'auto',
+          html5: 'prefer',
           onready: this.krpanoOnreadyCallback
         })
       }
     },
     krpanoOnreadyCallback (krpano) {
       this.krpano = krpano
-      this.krpano.hooks = this.hooks
       this.log('创建成功')
       this.$emit('init', this.krpano)
       this.createLock = false
