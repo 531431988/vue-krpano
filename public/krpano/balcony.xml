@@ -1,0 +1,22 @@
+<krpano>
+  <include url="./plugins/contextmenu.xml" />
+  <action name="comboboxexamples" autorun="onstart">
+    loadscene(0);
+    tween(view.architectural, 0.0, distance(1.0,0.5));
+    tween(view.pannini,       0.0, distance(1.0,0.5));
+    tween(view.fisheye,       1.0, distance(1.0,0.8));
+    tween(view.fov,           150, distance(150,0.8));
+    tween(view.vlookat,        90, distance(100,0.8));
+    add(new_hlookat, view.hlookat, 123.0);
+    tween(view.hlookat, get(new_hlookat), distance(100,0.8));
+  </action>
+  <!-- <autorotate enabled="true" waittime="1" speed="10" horizon="0.0" tofov="120.0"/> -->
+  <scene name="test" title="测试" thumburl="./panorama.tiles/balcony/thumb.jpg">
+    <view hlookat="-1" vlookat="11" fov="120" />
+    <preview url="./panorama.tiles/balcony/preview.jpg" />
+    <image>
+      <cube url="./panorama.tiles/balcony/pano_%s.jpg" />
+    </image>
+  </scene>
+
+</krpano>

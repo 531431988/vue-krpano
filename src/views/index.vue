@@ -1,10 +1,10 @@
 <template>
   <div class="krpano">
-    <Krpano @init="onInitKrpano" ref="krpano" xml="./krpano/test/test.xml" />
-    <van-overlay :show="overlay" :custom-style="style" @click="onClick" />
+    <Krpano @init="onInitKrpano" ref="krpano" :xml="xml" />
+    <van-overlay :show="overlay" :custom-style="style" @click="onOverlayClick" />
     <Nav @on-click="onNavClick" />
     <transition name="van-slide-up">
-      <PanoList v-if="show" />
+      <PanoList v-if="show" @on-click="onListClick" />
     </transition>
     <Sidebar @on-click="onSidebarClick" />
   </div>
@@ -32,6 +32,7 @@ export default {
     return {
       overlay: true,
       show: false,
+      xml: './krpano/balcony.xml',
       krpano: null,
       isAutoRotate: false
     }
@@ -50,7 +51,11 @@ export default {
         this.krpano.set('autorotate.accel', 2);
       }
     },
-    onClick () {
+    onListClick (item) {
+      this.xml = `./${item.scene}.xml`
+      // this.krpano.call(`loadpano(./${item.scene}.xml, null, MERGE, BLEND(0.5));`)
+    },
+    onOverlayClick () {
       this.overlay = true
       this.show = false
     },

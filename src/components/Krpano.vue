@@ -11,6 +11,9 @@ export default {
     },
     bgcolor: {
       type: String
+    },
+    scene: {
+      type: String
     }
   },
   data () {

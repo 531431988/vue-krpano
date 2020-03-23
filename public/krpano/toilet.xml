@@ -1,0 +1,12 @@
+﻿<krpano>
+  <include url="./plugins/contextmenu.xml" />
+  <scene name="toilet" title="厕所" thumburl="./panorama.tiles/toilet/thumb.jpg">
+    <view hlookat="-1" vlookat="11" fov="120" />
+    <preview url="./panorama.tiles/toilet/preview.jpg" />
+    <image>
+      <cube url="./panorama.tiles/toilet/pano_%s.jpg" />
+    </image>
+  </scene>
+</krpano>
+
+

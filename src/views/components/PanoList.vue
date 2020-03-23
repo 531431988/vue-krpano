@@ -1,11 +1,8 @@
 <template>
-  <swiper :options="swiperOptions">
-    <swiper-slide v-for="(item, index) in list" :key="index" @click="onSlideClick(index)">
-      <van-image
-        width="100%"
-        :src="item.src"
-      />
-      <p class="title">{{item.title}} {{index+1}}</p>
+  <swiper ref="swiper" :options="swiperOptions" @click-slide="handleClickSlide">
+    <swiper-slide v-for="(item, index) in list" :key="index">
+      <van-image width="100%" :src="item.src" />
+      <p class="title">{{item.title}}</p>
     </swiper-slide>
     <div class="swiper-scrollbar" slot="scrollbar"></div>
   </swiper>
@@ -23,74 +20,86 @@ export default {
     return {
       swiperOptions: {
         slidesPerView: 3,
+        centeredSlides: true,
+        spaceBetween: 30,
         scrollbar: {
           el: '.swiper-scrollbar',
           hide: true
         }
       },
       list: [{
-        src: './imgs/achilleion-hof-unten.tiles/thumb.jpg',
-        title: '测试'
+        src: './krpano/panorama.tiles/balcony/thumb.jpg',
+        title: '阳台',
+        scene: 'balcony'
       }, {
-        src: './imgs/canaldemure5.tiles/thumb.jpg',
-        title: '测试'
+        src: './krpano/panorama.tiles/bedroom1/thumb.jpg',
+        title: '卧室1',
+        scene: 'bedroom1'
       }, {
-        src: './imgs/kalamaki-strand.tiles/thumb.jpg',
-        title: '测试'
+        src: './krpano/panorama.tiles/bedroom2/thumb.jpg',
+        title: '卧室2',
+        scene: 'bedroom2'
       }, {
-        src: './imgs/kassiopi-felsen.tiles/thumb.jpg',
-        title: '测试'
+        src: './krpano/panorama.tiles/bedroom3/thumb.jpg',
+        title: '卧室3',
+        scene: 'bedroom3'
       }, {
-        src: './imgs/korfu-stadt-alte-festung-ganz-oben.tiles/thumb.jpg',
-        title: '测试'
+        src: './krpano/panorama.tiles/parlour/thumb.jpg',
+        title: '客厅',
+        scene: 'parlour'
       }, {
-        src: './imgs/pantokrator-antenne.tiles/thumb.jpg',
-        title: '测试'
-      }, {
-        src: './imgs/pantokrator-kloster.tiles/thumb.jpg',
-        title: '测试'
+        src: './krpano/panorama.tiles/toilet/thumb.jpg',
+        title: '厕所',
+        scene: 'toilet'
       }]
     }
   },
+  computed: {
+    swiper () {
+      return this.$refs.swiper.$swiper
+    }
+  },
   methods: {
-    onSlideClick () {
+    handleClickSlide (index) {
+      this.swiper.slideTo(index, 1000, false)
+      this.$emit('on-click', this.list[index])
     }
   }
 
 }
 </script>
 <style lang="less" scoped>
-  .swiper-container {
-    position: absolute;
-    left: 0;
-    bottom: 120px;
-    width: 100%;
-    z-index: 999;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.2);
-    .swiper-slide {
-      border: 3px solid transparent;
-      &:not(:first-child) {
-        margin-left: 15px
-      }
-      .van-image{
-        vertical-align: middle;
-      }
-      &-active{
-        border-color: @primary-color
-      }
+.swiper-container {
+  position: absolute;
+  left: 0;
+  bottom: 120px;
+  width: 100%;
+  z-index: 999;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  .swiper-slide {
+    border: 3px solid transparent;
+    &:not(:first-child) {
+      margin-left: 15px;
     }
-    .title{
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      margin: 0;
-      text-align: center;
-      color: #fff;
-      font-size: 14px;
-      padding: 5px;
-      background: rgba(0, 0, 0, 0.5);
+    .van-image {
+      vertical-align: middle;
+    }
+    &-active {
+      border-color: @primary-color;
     }
   }
+  .title {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
 </style>
