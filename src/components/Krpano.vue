@@ -50,19 +50,26 @@ export default {
         embedpano({
           swf: './public/krpano/krpano.swf',
           xml: this.xml,
-          target: this.id,  // 嵌入容器id
-          id: `${this.id}-obj`, // 当前全景id，javascript接口调用会使用此id
-          bgcolor: '#000000', // 背景颜色
-          html5: 'prefer',   // html5模式
+          // 嵌入容器id
+          target: this.id,
+          // 当前全景id，javascript接口调用会使用此id
+          id: `${this.id}-obj`,
+          // 背景颜色
+          bgcolor: '#000000',
+          // html5模式
+          html5: 'prefer',
           // flash：'auto', // flash模式
           // vars:{},// 在xml加载解析后设置启动变量
           // initvars: {},// 在xml加载解析前设置启动变量，可以在地址进行查询（our.html?initvars.variable=value）
-          basepath: './',// 基本路径 （相对于krpano.swf）
+          // 基本路径 （相对于krpano.swf）
+          basepath: './',
           consolelog: false,
-          mwheel: true,  // 是否启用鼠标滚轮
+          // 是否启用鼠标滚轮
+          mwheel: true,
           // 启用url查询参数（ html5, flash, wmode, mobilescale, fakedevice, initvars）作为变量传递，如tour.html?html5=only&startscene=scene2&initvars.design=flat
           passQueryParameters: true,
-          onready: this.krpanoOnreadyCallback  // 准备就绪回调函数
+          // 准备就绪回调函数
+          onready: this.krpanoOnreadyCallback
         })
       }
     },
@@ -97,7 +104,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.show)
     this.createPano()
     this.$on(['init', 'xmlChanged'], this.loadScene)
   },

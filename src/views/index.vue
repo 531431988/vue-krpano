@@ -5,8 +5,8 @@
     <transition name="van-slide-up">
       <PanoList :active="active" v-if="show" @on-click="onListClick" />
     </transition>
-    <Sidebar @on-click="onSidebarClick" />
-    <Krpano @init="onInitKrpano" ref="krpano" :xml="xml" />
+    <Sidebar :krpano="krpano" />
+    <Krpano @init="onInitKrpano" ref="krpano" :xml="xml" :scene="scene" />
   </div>
 </template>
 
@@ -19,6 +19,11 @@ export default {
     Sidebar,
     Nav,
     PanoList
+  },
+  provide () {
+    return {
+      krpano: this.krpano
+    }
   },
   computed: {
     style () {
@@ -33,8 +38,9 @@ export default {
       overlay: true,
       show: false,
       xml: './krpano/balcony.xml',
+      scene: '',
       krpano: null,
-      isAutoRotate: false,
+      isAutoRotate: true,
       active: 0
     }
   },
@@ -42,32 +48,10 @@ export default {
     onNavClick () {
       this.show = !this.show
     },
-    onSidebarClick (name) {
-      const { krpano } = this
-      switch (name) {
-        case 'auto':
-          // 设置自动旋转
-          this.isAutoRotate = !this.isAutoRotate
-          krpano.set('autorotate.enabled', this.isAutoRotate)
-          krpano.set('autorotate.waittime', 1.5)
-          krpano.set('autorotate.speed', 10)
-          krpano.set('autorotate.accel', 1)
-          var hlookat = krpano.get('view.hlookat')
-          var vlookat = krpano.get('view.vlookat')
-          var fov = krpano.get('view.fov')
-          var distortion = krpano.get('view.distortion')
-          console.log(`hlookat="${hlookat.toFixed(2)}" vlookat="${vlookat.toFixed(2)}" fov="${fov.toFixed(2)}" distortion="${distortion.toFixed(2)}"`)
-          break
-        case 'fullscreen':
-          krpano.set('fullscreen', true)
-          break
-        default:
-          break
-      }
-    },
     onListClick (item, index) {
-      this.xml = `./${item.scene}.xml`
       this.active = index
+      this.scene = item.scene
+      // this.xml = `./${item.scene}.xml`
       // this.krpano.call(`loadpano(./${item.scene}.xml, null, MERGE, BLEND(0.5));`)
     },
     onOverlayClick () {
@@ -83,7 +67,7 @@ export default {
           // var v = krpano.get('view.vlookat')
           // var hs_name = `hs${((Date.now() + Math.random()) | 0)}`
           // krpano.call(`addhotspot(${hs_name})`)
-          // krpano.set(`hotspot[${hs_name}].url`, './krpano/test/vtourskin_hotspot.png')
+          // krpano.set(`hotspot[${hs_name}].url`, './krpano/new_spotd7_gif.png')
           // krpano.set(`hotspot[${hs_name}].ath`, h)
           // krpano.set(`hotspot[${hs_name}].atv`, v)
           // krpano.set(`hotspot[${hs_name}].distorted`, true)
@@ -92,15 +76,16 @@ export default {
           //     alert(`hotspot ${hs} clicked`)
           //   }.bind(null, hs_name))
           // }
-          krpano.set('fov_moveforce', -1)
-          krpano.set('hlookat_moveforce', 1)
-          setTimeout(() => {
-            krpano.set('fov_moveforce', 0)
-            krpano.set('hlookat_moveforce', 0)
-            krpano.set('view.hlookat', 145)
-            krpano.set('view.vlookat', 10)
-            krpano.set('view.fov', 120)
-          }, 1500)
+
+          // krpano.set('fov_moveforce', -1)
+          // krpano.set('hlookat_moveforce', 1)
+          // setTimeout(() => {
+          //   krpano.set('fov_moveforce', 0)
+          //   krpano.set('hlookat_moveforce', 0)
+          //   krpano.set('view.hlookat', 145)
+          //   krpano.set('view.vlookat', 10)
+          //   krpano.set('view.fov', 120)
+          // }, 1500)
         }
       }, 1000)
     }

@@ -1,0 +1,26 @@
+<krpano>
+  <events name="skin_events" keep="true" onxmlcomplete="startup();" />
+  <action name="startup">
+    if(xml.scene === 'balcony', start_animation())
+  </action>
+  <action name="start_animation" scope="local">
+    set(global.lpinfo, scene=get(xml.scene), hlookat=get(view.hlookat), vlookat=get(view.vlookat), fov=get(view.fov), fovmax=get(view.fovmax), limitview=get(view.limitview) );
+    set(view, fovmax=180, limitview=lookto, vlookatmin=90, vlookatmax=90);
+    lookat(calc(global.lpinfo.hlookat - 180), 0, 150, 1, 0, 0);
+      delayedcall(0.5,
+        if(lpinfo.scene === xml.scene,
+          set(control.usercontrol, off);
+          set(view, limitview=get(lpinfo.limitview), vlookatmin=null, view.vlookatmax=null);
+          tween(view.hlookat|view.vlookat|view.fov|view.distortion, calc('' + lpinfo.hlookat + '|' + lpinfo.vlookat + '|' + lpinfo.fov + '|' + 0.0), 3.0, easeOutQuad);
+          delayedcall(3.0,
+            set(control.usercontrol, all);
+            tween(view.fovmax, get(lpinfo.fovmax));
+            delete(global.lpinfo);
+          );
+          ,
+          delete(global.lpinfo);
+        );
+      );
+    );
+  </action>
+</krpano>

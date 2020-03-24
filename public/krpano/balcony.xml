@@ -1,21 +1,28 @@
-<krpano>
+<krpano onstart="loadscene(balcony);">
+	<!-- 右键菜单 -->
   <include url="./plugins/contextmenu.xml" />
-  <action name="comboboxexamples" autorun="onstart">
-    loadscene(0);
-    tween(view.architectural, 0.0, distance(1.0,0.5));
-		tween(view.pannini,       0.0, distance(1.0,0.5));
-		tween(view.fisheye,       1.0, distance(1.0,0.8));
-		tween(view.fov,           150, distance(150,0.8));
-		tween(view.vlookat,        90, distance(100,0.8));
-		add(new_hlookat, view.hlookat, 123.0);
-		tween(view.hlookat, get(new_hlookat), distance(100,0.8));
-  </action>
-  <!-- <autorotate enabled="true" waittime="1" speed="10" horizon="0.0" tofov="120.0"/> -->
-  <scene name="test" title="测试" thumburl="./panorama.tiles/balcony/thumb.jpg">
-    <view hlookat="177" vlookat="10" fov="120" />
+	<!-- 场景初始化 -->
+	<include url="./plugins/start.xml" />
+
+  <autorotate enabled="true"
+	waittime="2.0"
+	accel="1"
+	speed="10.0"
+	/>
+  <scene name="balcony" title="测试"  thumburl="./panorama.tiles/balcony/thumb.jpg">
+    <view hlookat="180" vlookat="0" fov="150" fovtype="MFOV"  />
     <preview url="./panorama.tiles/balcony/preview.jpg" />
     <image>
       <cube url="./panorama.tiles/balcony/pano_%s.jpg" />
+    </image>
+  </scene>
+
+
+	<scene name="bedroom1" title="卧室1" thumburl="./panorama.tiles/bedroom1/thumb.jpg">
+    <view hlookat="-1" vlookat="11" fov="120" fovtype="MFOV" />
+    <preview url="./panorama.tiles/bedroom1/preview.jpg" />
+    <image>
+      <cube url="./panorama.tiles/bedroom1/pano_%s.jpg" />
     </image>
   </scene>
 
