@@ -6,7 +6,7 @@
       <PanoList :active="active" v-if="show" @on-click="onListClick" />
     </transition>
     <Sidebar :krpano="krpano" />
-    <Krpano @init="onInitKrpano" ref="krpano" :xml="xml" :scene="scene" />
+    <Krpano @init="onInitKrpano" @change="onSceneChanged" ref="krpano" :xml="xml" :scene="scene" />
   </div>
 </template>
 
@@ -43,22 +43,16 @@ export default {
     onNavClick () {
       this.show = !this.show
     },
+    // 切换场景
     onListClick (item, index) {
       this.active = index
       const { krpano } = this
-      // this.scene = item.scene
-      // this.xml = `./${item.scene}.xml`
-      krpano.call(`loadscene(${item.scene}, null, MERGE, BLEND(1))`)
-      krpano.call('lookat(145, 0, 130)')
-      krpano.call('set(view.architectural, 1.0)')
-      krpano.call('wait(BLEND)')
-      krpano.call('tween(view.architectural, 0.0, 2.0)')
-      krpano.call('oninterrupt( tween(view.architectural, 0.0, 0.5))')
-      krpano.call('lookto(0, 0, 130, smooth(100, 100, 200))')
-      if (index === 1) {
-        addhotspot(krpano, '180', '0')
-      }
-      // this.krpano.call(`loadpano(./${item.scene}.xml, null, MERGE, BLEND(0.5));`)
+      this.scene = item.scene
+    },
+    onSceneChanged (krpano, name) {
+      addhotspot(krpano, '180', '0', params => {
+        console.log('我被点了')
+      })
     },
     onOverlayClick () {
       this.overlay = true
@@ -66,12 +60,6 @@ export default {
     },
     onInitKrpano (krpano) {
       this.krpano = krpano
-      setTimeout(() => {
-        if (krpano) {
-          // addhotspot(krpano, '180', '0')
-
-        }
-      }, 1000)
     }
   },
   mounted () {

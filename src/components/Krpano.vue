@@ -80,17 +80,20 @@ export default {
       this.createLock = false
     },
     loadScene () {
-      let scene = this.scene
-      if (this.krpano) {
+      const { krpano, scene } = this
+      if (krpano) {
         if (scene) {
-          let str = `if(scene[${scene}]===null,
-                        loadscene(get(scene[0].name),null,MERGE,BLEND(0.5)),
-                        loadscene(${scene},null,MERGE,BLEND(0.5)))`
-          this.krpano.call(str)
+          krpano.call(`loadscene(${scene}, null, MERGE, BLEND(1))`)
+          krpano.call('lookat(145, 0, 130)')
+          krpano.call('set(view.architectural, 1.0)')
+          krpano.call('wait(BLEND)')
+          krpano.call('tween(view.architectural, 0.0, 2.0)')
+          krpano.call('oninterrupt( tween(view.architectural, 0.0, 0.5))')
+          krpano.call('lookto(0, 0, 130, smooth(100, 100, 200))')
           this.log(`scene changed: ${scene}`)
-          this.$emit('sceneChanged', scene)
+          this.$emit('change', krpano, scene)
         } else {
-          this.krpano.call('loadscene(get(scene[0].name),null,MERGE,BLEND(0.5))')
+          krpano.call('loadscene(get(scene[0].name),null,MERGE,BLEND(0.5))')
         }
       }
     },

@@ -5,29 +5,24 @@
       <cube url="./panorama.tiles/parlour/pano_%s.jpg" />
     </image>
 
-    <!-- 去阳台 -->
-    <hotspot name="spot1" style="hotspot_skin" ath="0" atv="0" tooltip="客厅"
-      onclick="lookto(get(ath), 5, 35);
-      loadscene(balcony, null, MERGE,BLEND(1));
-      lookat(145, 0, 130);
-      set(view.architectural, 1.0);
-      wait(BLEND);
-      tween(view.architectural, 0.0, 2.0);
-      oninterrupt( tween(view.architectural,0.0, 0.5) );
-      lookto(180, 0, 130, smooth(100, 100, 200));
-      " />
+    <hotspot
+    name="spot1"
+    style="hotspot_skin"
+    ath="0"
+    atv="0"
+    tooltip="客厅"
+    scene="balcony"
+    onclick="hotspotClick" />
 
-      <!-- 卧室1 -->
-    <hotspot name="spot2" style="hotspot_skin" ath="140" atv="0" tooltip="卧室1"
-      onclick="lookto(get(ath), 5, 35);
-      loadscene(bedroom1, null, MERGE,BLEND(1));
-      lookat(145, 0, 130);
-      set(view.architectural, 1.0);
-      wait(BLEND);
-      tween(view.architectural, 0.0, 2.0);
-      oninterrupt( tween(view.architectural,0.0, 0.5) );
-      lookto(0, 0, 130, smooth(100, 100, 200));
-      " />
+    <hotspot
+    name="spot2"
+    style="hotspot_skin"
+    ath="140"
+    atv="0"
+    tooltip="客厅"
+    scene="bedroom1"
+    onclick="hotspotClick" />
+
 </krpano>
 
 

@@ -4,16 +4,15 @@
     <image>
       <cube url="./panorama.tiles/bedroom2/pano_%s.jpg" />
     </image>
-    <hotspot name="spot2" style="hotspot_skin" ath="-150" atv="0" tooltip="卧室1"
-      onclick="lookto(get(ath), 5, 35);
-      loadscene(bedroom1, null, MERGE,BLEND(1));
-      lookat(145, 0, 130);
-      set(view.architectural, 1.0);
-      wait(BLEND);
-      tween(view.architectural, 0.0, 2.0);
-      oninterrupt( tween(view.architectural,0.0, 0.5) );
-      lookto(0, 0, 130, smooth(100, 100, 200));
-      " />
+    <hotspot
+      name="spot1"
+      style="hotspot_skin"
+      ath="-150"
+      atv="0"
+      tooltip="卧室1"
+      scene="bedroom1"
+      onclick="hotspotClick" />
+
 </krpano>
 
 
