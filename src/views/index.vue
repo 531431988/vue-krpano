@@ -15,6 +15,7 @@ import { Krpano } from '@/components'
 import { Sidebar, Nav, PanoList } from './components'
 import config from '@/config'
 import hotspot from '@/mixins/hotspot'
+import { ImagePreview } from 'vant'
 export default {
   components: {
     Krpano,
@@ -69,7 +70,7 @@ export default {
       setTimeout(() => {
         // 生成跳转热点
         this.createHotSpot()
-      }, 200)
+      }, 1000)
     },
     // 生成热点和查看按钮
     createHotSpot () {
@@ -81,7 +82,10 @@ export default {
       let look = config.hotspot[this.scene].look
       look && look.forEach(item => {
         this.addhotspot(item, (current, next) => {
-          console.log('有人点了我')
+          ImagePreview([
+            'https://img.yzcdn.cn/1.jpg',
+            'https://img.yzcdn.cn/2.jpg'
+          ])
         })
       })
     }

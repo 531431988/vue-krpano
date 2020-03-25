@@ -24,7 +24,7 @@ export default {
       to: [{
         name: 'parlour',
         ath: 180,
-        atv: 0,
+        atv: 40,
         title: '客厅'
       }]
     },
@@ -32,12 +32,12 @@ export default {
       to: [{
         name: 'balcony',
         ath: 0,
-        atv: 0,
-        title: '客厅'
+        atv: 30,
+        title: '阳台'
       }, {
         name: 'bedroom1',
         ath: 135,
-        atv: 0,
+        atv: 30,
         title: '卧室1'
       }],
       look: [{
@@ -49,22 +49,22 @@ export default {
       to: [{
         name: 'parlour',
         ath: -20,
-        atv: 0,
+        atv: 40,
         title: '客厅'
       }, {
         name: 'bedroom2',
         ath: 30,
-        atv: 0,
+        atv: 40,
         title: '卧室2'
       }, {
         name: 'bedroom3',
         ath: 90,
-        atv: 0,
+        atv: 40,
         title: '卧室3'
       }, {
         name: 'toilet',
-        ath: 180,
-        atv: 0,
+        ath: 190,
+        atv: 40,
         title: '厕所'
       }],
       look: [{
@@ -76,7 +76,7 @@ export default {
       to: [{
         name: 'bedroom1',
         ath: -150,
-        atv: 0,
+        atv: 40,
         title: '卧室1'
       }],
       look: [{
@@ -88,7 +88,7 @@ export default {
       to: [{
         name: 'bedroom1',
         ath: 90,
-        atv: 0,
+        atv: 20,
         title: '卧室1'
       }],
       look: [{
@@ -99,8 +99,8 @@ export default {
     toilet: {
       to: [{
         name: 'bedroom1',
-        ath: -90,
-        atv: 0,
+        ath: -70,
+        atv: 40,
         title: '卧室1'
       }],
       look: [{
