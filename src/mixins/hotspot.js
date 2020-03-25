@@ -3,12 +3,11 @@ export default {
   methods: {
     addhotspot ({ name, ath, atv, title, scene }, callback) {
       const { krpano } = this
-      // ath = ath || krpano.get('view.hlookat')
-      // atv = atv || krpano.get('view.vlookat')
-      if (name === '') {
+      if (!name) {
         name = `hs${((Date.now() + Math.random()) | 0)}`
         krpano.call(`addhotspot(${name})`)
         krpano.set(`hotspot[${name}].url`, './krpano/look.png')
+        krpano.set(`hotspot[${name}].distorted`, true)
       } else {
         krpano.call(`addhotspot(${name})`)
         krpano.call(`hotspot[${name}].loadstyle(hotspot_skin)`)
@@ -17,7 +16,6 @@ export default {
       krpano.set(`hotspot[${name}].atv`, atv)
       krpano.set(`hotspot[${name}].tooltip`, title)
       krpano.set(`hotspot[${name}].scene`, scene)
-      // krpano.set(`hotspot[${name}].distorted`, true)
       if (krpano.get('device.html5')) {
         krpano.set(`hotspot[${name}].onclick`, function (params) {
           callback && callback(krpano.get('xml.scene'), params)

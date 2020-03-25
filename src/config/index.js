@@ -26,10 +26,6 @@ export default {
         ath: 180,
         atv: 0,
         title: '客厅'
-      }],
-      look: [{
-        ath: 180,
-        atv: 0
       }]
     },
     parlour: {

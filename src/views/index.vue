@@ -78,6 +78,12 @@ export default {
           this.scene = item.name
         })
       })
+      let look = config.hotspot[this.scene].look
+      look && look.forEach(item => {
+        this.addhotspot(item, (current, next) => {
+          console.log('有人点了我')
+        })
+      })
     }
   }
 
