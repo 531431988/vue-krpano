@@ -4,7 +4,7 @@
   <image>
     <cube url="./panorama.tiles/toilet/pano_%s.jpg" />
   </image>
-  <hotspot name="spot2" style="hotspot_ani_white" ath="-90" atv="0"
+  <hotspot name="spot2" style="hotspot_skin" ath="-90" atv="0" tooltip="卧室1"
       onclick="lookto(get(ath), 5, 35);
       loadscene(bedroom1, null, MERGE,BLEND(1));
       lookat(145, 0, 130);

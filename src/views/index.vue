@@ -55,6 +55,9 @@ export default {
       krpano.call('tween(view.architectural, 0.0, 2.0)')
       krpano.call('oninterrupt( tween(view.architectural, 0.0, 0.5))')
       krpano.call('lookto(0, 0, 130, smooth(100, 100, 200))')
+      if (index === 1) {
+        addhotspot(krpano, '180', '0')
+      }
       // this.krpano.call(`loadpano(./${item.scene}.xml, null, MERGE, BLEND(0.5));`)
     },
     onOverlayClick () {

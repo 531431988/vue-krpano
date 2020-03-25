@@ -5,7 +5,7 @@ export const addhotspot = (krpano, ath, atv, callback) => {
   atv = atv || krpano.get('view.vlookat')
   krpano.call(`addhotspot(${name})`)
   krpano.set(`hotspot[${name}].url`, './krpano/look.png')
-  // krpano.set(`hotspot[${name}].loadstyle(hotspot_ani_white)`)
+  // krpano.set(`hotspot[${name}].loadstyle(hotspot_skin)`)
   krpano.set(`hotspot[${name}].ath`, ath)
   krpano.set(`hotspot[${name}].atv`, atv)
   if (krpano.get('device.html5')) {

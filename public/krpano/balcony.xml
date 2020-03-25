@@ -12,11 +12,11 @@
 	/>
 
   <!-- 热点样式  -->
-  <style name="hotspot_ani_white"
+  <style name="hotspot_skin"
     url="./new_spotd7_gif.png"
     crop="0|0|128|128"
     frames="20" framewidth="128" frameheight="128" frame="0"
-    onloaded="hotspot_animate();"
+    onloaded="hotspot_animate();add_tooltip()"
     />
   <!-- 热点动画 -->
   <action name="hotspot_animate">
@@ -27,6 +27,19 @@
 			delayedcall(0.03, hotspot_animate() );
 		  );
 	</action>
+  <action name="add_tooltip">
+    txtadd(tooltipname, 'tooltip_', get(name));
+    addplugin(get(tooltipname)); txtadd(plugin[get(tooltipname)].parent, 'hotspot[',get(name),']');
+    set(plugin[get(tooltipname)].url,'%SWFPATH%/plugins/textfield.swf');
+    set(plugin[get(tooltipname)].align,bottom); set(plugin[get(tooltipname)].edge,bottom);
+    set(plugin[get(tooltipname)].x,0); set(plugin[get(tooltipname)].y,0);
+    set(plugin[get(tooltipname)].width,200); set(plugin[get(tooltipname)].autoheight,true);
+    set(plugin[get(tooltipname)].background,false); set(plugin[get(tooltipname)].border,false);
+    set(plugin[get(tooltipname)].css,'text-align:center; color:#FFFFFF; font-family:Arial; font-weight:bold; font-size:16px;');
+    set(plugin[get(tooltipname)].textshadow,1); set(plugin[get(tooltipname)].textshadowrange,6.0); set(plugin[get(tooltipname)].textshadowangle,90);
+    copy(plugin[get(tooltipname)].html,hotspot[get(name)].tooltip);
+    set(plugin[get(tooltipname)].enabled,false);
+  </action>
 
   <scene name="balcony" title="阳台"  thumburl="./panorama.tiles/balcony/thumb.jpg">
     <view hlookat="180" vlookat="0" fov="130" fovtype="MFOV" maxpixelzoom="1.5" limitview="lookat" />
@@ -35,8 +48,7 @@
       <cube url="./panorama.tiles/balcony/pano_%s.jpg" />
     </image>
 
-    <!-- 进入客厅 -->
-    <hotspot name="spot1" style="hotspot_ani_white" ath="180" atv="0"
+    <hotspot name="spot1" style="hotspot_skin" ath="180" atv="0" tooltip="客厅"
       onclick="lookto(get(ath), 5, 35);
       loadscene(parlour, null, MERGE, BLEND(1));
       lookat(145, 0, 130);
