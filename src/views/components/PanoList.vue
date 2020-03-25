@@ -37,25 +37,25 @@ export default {
         title: '阳台',
         scene: 'balcony'
       }, {
+        src: './krpano/panorama.tiles/parlour/thumb.jpg',
+        title: '客厅',
+        scene: 'parlour'
+      }, {
         src: './krpano/panorama.tiles/bedroom1/thumb.jpg',
         title: '卧室1',
         scene: 'bedroom1'
-      // }, {
-      //   src: './krpano/panorama.tiles/bedroom2/thumb.jpg',
-      //   title: '卧室2',
-      //   scene: 'bedroom2'
-      // }, {
-      //   src: './krpano/panorama.tiles/bedroom3/thumb.jpg',
-      //   title: '卧室3',
-      //   scene: 'bedroom3'
-      // }, {
-      //   src: './krpano/panorama.tiles/parlour/thumb.jpg',
-      //   title: '客厅',
-      //   scene: 'parlour'
-      // }, {
-      //   src: './krpano/panorama.tiles/toilet/thumb.jpg',
-      //   title: '厕所',
-      //   scene: 'toilet'
+      }, {
+        src: './krpano/panorama.tiles/bedroom2/thumb.jpg',
+        title: '卧室2',
+        scene: 'bedroom2'
+      }, {
+        src: './krpano/panorama.tiles/bedroom3/thumb.jpg',
+        title: '卧室3',
+        scene: 'bedroom3'
+      }, {
+        src: './krpano/panorama.tiles/toilet/thumb.jpg',
+        title: '厕所',
+        scene: 'toilet'
       }]
     }
   },

@@ -1,12 +1,52 @@
 ﻿<krpano>
-  <include url="./plugins/contextmenu.xml" />
-  <scene name="bedroom1" title="卧室1" thumburl="./panorama.tiles/bedroom1/thumb.jpg">
-    <view hlookat="-1" vlookat="11" fov="120" />
+    <view  hlookat="0" vlookat="0" fov="130" />
     <preview url="./panorama.tiles/bedroom1/preview.jpg" />
     <image>
       <cube url="./panorama.tiles/bedroom1/pano_%s.jpg" />
     </image>
-  </scene>
+    <!-- 去客厅 -->
+    <hotspot name="spot1" style="hotspot_ani_white" ath="-20" atv="0"
+      onclick="lookto(get(ath), 5, 35);
+      loadscene(parlour, null, MERGE,BLEND(1));
+      lookat(145, 0, 130);
+      set(view.architectural, 1.0);
+      wait(BLEND);
+      tween(view.architectural, 0.0, 2.0);
+      oninterrupt( tween(view.architectural,0.0, 0.5) );
+      lookto(180, 0, 130, smooth(100, 100, 200));
+      " />
+
+    <hotspot name="spot2" style="hotspot_ani_white" ath="20" atv="0"
+      onclick="lookto(get(ath), 5, 35);
+      loadscene(bedroom2, null, MERGE,BLEND(1));
+      lookat(145, 0, 130);
+      set(view.architectural, 1.0);
+      wait(BLEND);
+      tween(view.architectural, 0.0, 2.0);
+      oninterrupt( tween(view.architectural,0.0, 0.5) );
+      lookto(0, 0, 130, smooth(100, 100, 200));
+      " />
+
+      <hotspot name="spot3" style="hotspot_ani_white" ath="90" atv="0"
+      onclick="lookto(get(ath), 5, 35);
+      loadscene(bedroom3, null, MERGE,BLEND(1));
+      lookat(145, 0, 130);
+      set(view.architectural, 1.0);
+      wait(BLEND);
+      tween(view.architectural, 0.0, 2.0);
+      oninterrupt( tween(view.architectural,0.0, 0.5) );
+      lookto(0, 0, 130, smooth(100, 100, 200));
+      " />
+      <hotspot name="spot4" style="hotspot_ani_white" ath="180" atv="0"
+      onclick="lookto(get(ath), 5, 35);
+      loadscene(toilet, null, MERGE,BLEND(1));
+      lookat(145, 0, 130);
+      set(view.architectural, 1.0);
+      wait(BLEND);
+      tween(view.architectural, 0.0, 2.0);
+      oninterrupt( tween(view.architectural,0.0, 0.5) );
+      lookto(0, 0, 130, smooth(100, 100, 200));
+      " />
 </krpano>
 
 

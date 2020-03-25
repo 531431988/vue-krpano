@@ -16,18 +16,18 @@ export default {
   },
   methods: {
     onClick (name) {
-      console.log(this.krpano)
       const { krpano } = this
       switch (name) {
         case 'auto':
           // 设置自动旋转
           this.isAutoRotate = !this.isAutoRotate
           krpano.set('autorotate.enabled', this.isAutoRotate)
-          // var hlookat = krpano.get('view.hlookat')
-          // var vlookat = krpano.get('view.vlookat')
-          // var fov = krpano.get('view.fov')
-          // var distortion = krpano.get('view.distortion')
-          // console.log(`hlookat="${hlookat.toFixed(2)}" vlookat="${vlookat.toFixed(2)}" fov="${fov.toFixed(2)}" distortion="${distortion.toFixed(2)}"`)
+          // 获取当前视角
+          var hlookat = krpano.get('view.hlookat')
+          var vlookat = krpano.get('view.vlookat')
+          var fov = krpano.get('view.fov')
+          var distortion = krpano.get('view.distortion')
+          console.log(`hlookat="${hlookat.toFixed(2)}" vlookat="${vlookat.toFixed(2)}" fov="${fov.toFixed(2)}" distortion="${distortion.toFixed(2)}"`)
           break
         case 'fullscreen':
           krpano.set('fullscreen', true)

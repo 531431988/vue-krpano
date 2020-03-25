@@ -4,26 +4,71 @@
 	<!-- 场景初始化 -->
 	<include url="./plugins/start.xml" />
 
+  <!-- 旋转配置 -->
   <autorotate enabled="true"
 	waittime="2.0"
 	accel="1"
 	speed="10.0"
 	/>
-  <scene name="balcony" title="测试"  thumburl="./panorama.tiles/balcony/thumb.jpg">
-    <view hlookat="180" vlookat="0" fov="150" fovtype="MFOV"  />
+
+  <!-- 热点样式  -->
+  <style name="hotspot_ani_white"
+    url="./new_spotd7_gif.png"
+    crop="0|0|128|128"
+    frames="20" framewidth="128" frameheight="128" frame="0"
+    onloaded="hotspot_animate();"
+    />
+  <!-- 热点动画 -->
+  <action name="hotspot_animate">
+		if(loaded,
+			inc(frame,1,get(frames),0);
+			mul(ypos,frame,frameheight);
+			txtadd(crop,'0|',get(ypos),'|',get(framewidth),'|',get(frameheight));
+			delayedcall(0.03, hotspot_animate() );
+		  );
+	</action>
+
+  <scene name="balcony" title="阳台"  thumburl="./panorama.tiles/balcony/thumb.jpg">
+    <view hlookat="180" vlookat="0" fov="130" fovtype="MFOV" maxpixelzoom="1.5" limitview="lookat" />
     <preview url="./panorama.tiles/balcony/preview.jpg" />
     <image>
       <cube url="./panorama.tiles/balcony/pano_%s.jpg" />
     </image>
+
+    <!-- 进入客厅 -->
+    <hotspot name="spot1" style="hotspot_ani_white" ath="180" atv="0"
+      onclick="lookto(get(ath), 5, 35);
+      loadscene(parlour, null, MERGE, BLEND(1));
+      lookat(145, 0, 130);
+      set(view.architectural, 1.0);
+      wait(BLEND);
+      tween(view.architectural, 0.0, 2.0);
+      oninterrupt( tween(view.architectural, 0.0, 0.5) );
+      lookto(140, 0, 130, smooth(100, 100, 200));
+      " />
   </scene>
 
 
-	<scene name="bedroom1" title="卧室1" thumburl="./panorama.tiles/bedroom1/thumb.jpg">
-    <view hlookat="-1" vlookat="11" fov="120" fovtype="MFOV" />
-    <preview url="./panorama.tiles/bedroom1/preview.jpg" />
-    <image>
-      <cube url="./panorama.tiles/bedroom1/pano_%s.jpg" />
-    </image>
+	<scene name="parlour" title="客厅" thumburl="./panorama.tiles/parlour/thumb.jpg">
+    <include url="./parlour.xml" />
+  </scene>
+
+
+  <scene name="bedroom1" title="卧室1" thumburl="./panorama.tiles/bedroom1/thumb.jpg">
+    <include url="./bedroom1.xml" />
+  </scene>
+
+
+  <scene name="bedroom2" title="卧室2" thumburl="./panorama.tiles/bedroom2/thumb.jpg">
+    <include url="./bedroom2.xml" />
+  </scene>
+
+  <scene name="bedroom3" title="卧室3" thumburl="./panorama.tiles/bedroom3/thumb.jpg">
+    <include url="./bedroom3.xml" />
+  </scene>
+
+  <scene name="toilet" title="厕所" thumburl="./panorama.tiles/toilet/thumb.jpg">
+    <include url="./toilet.xml" />
   </scene>
 
 </krpano>

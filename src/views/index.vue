@@ -13,6 +13,7 @@
 <script>
 import { Krpano } from '@/components'
 import { Sidebar, Nav, PanoList } from './components'
+import { addhotspot } from '@/utils/krpano'
 export default {
   components: {
     Krpano,
@@ -20,9 +21,14 @@ export default {
     Nav,
     PanoList
   },
-  provide () {
+  data () {
     return {
-      krpano: this.krpano
+      overlay: true,
+      show: false,
+      xml: './krpano/balcony.xml',
+      scene: '',
+      krpano: null,
+      active: 0
     }
   },
   computed: {
@@ -33,25 +39,22 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      overlay: true,
-      show: false,
-      xml: './krpano/balcony.xml',
-      scene: '',
-      krpano: null,
-      isAutoRotate: true,
-      active: 0
-    }
-  },
   methods: {
     onNavClick () {
       this.show = !this.show
     },
     onListClick (item, index) {
       this.active = index
-      this.scene = item.scene
+      const { krpano } = this
+      // this.scene = item.scene
       // this.xml = `./${item.scene}.xml`
+      krpano.call(`loadscene(${item.scene}, null, MERGE, BLEND(1))`)
+      krpano.call('lookat(145, 0, 130)')
+      krpano.call('set(view.architectural, 1.0)')
+      krpano.call('wait(BLEND)')
+      krpano.call('tween(view.architectural, 0.0, 2.0)')
+      krpano.call('oninterrupt( tween(view.architectural, 0.0, 0.5))')
+      krpano.call('lookto(0, 0, 130, smooth(100, 100, 200))')
       // this.krpano.call(`loadpano(./${item.scene}.xml, null, MERGE, BLEND(0.5));`)
     },
     onOverlayClick () {
@@ -60,32 +63,10 @@ export default {
     },
     onInitKrpano (krpano) {
       this.krpano = krpano
-
       setTimeout(() => {
         if (krpano) {
-          // var h = krpano.get('view.hlookat')
-          // var v = krpano.get('view.vlookat')
-          // var hs_name = `hs${((Date.now() + Math.random()) | 0)}`
-          // krpano.call(`addhotspot(${hs_name})`)
-          // krpano.set(`hotspot[${hs_name}].url`, './krpano/new_spotd7_gif.png')
-          // krpano.set(`hotspot[${hs_name}].ath`, h)
-          // krpano.set(`hotspot[${hs_name}].atv`, v)
-          // krpano.set(`hotspot[${hs_name}].distorted`, true)
-          // if (krpano.get('device.html5')) {
-          //   krpano.set(`hotspot[${hs_name}].onclick`, function (hs) {
-          //     alert(`hotspot ${hs} clicked`)
-          //   }.bind(null, hs_name))
-          // }
+          // addhotspot(krpano, '180', '0')
 
-          // krpano.set('fov_moveforce', -1)
-          // krpano.set('hlookat_moveforce', 1)
-          // setTimeout(() => {
-          //   krpano.set('fov_moveforce', 0)
-          //   krpano.set('hlookat_moveforce', 0)
-          //   krpano.set('view.hlookat', 145)
-          //   krpano.set('view.vlookat', 10)
-          //   krpano.set('view.fov', 120)
-          // }, 1500)
         }
       }, 1000)
     }

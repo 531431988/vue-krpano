@@ -1,12 +1,19 @@
 ﻿<krpano>
-  <include url="./plugins/contextmenu.xml" />
-  <scene name="bedroom2" title="卧室2" thumburl="./panorama.tiles/bedroom2/thumb.jpg">
-    <view hlookat="-1" vlookat="11" fov="120" />
+    <view  hlookat="0" vlookat="0" fov="130" />
     <preview url="./panorama.tiles/bedroom2/preview.jpg" />
     <image>
       <cube url="./panorama.tiles/bedroom2/pano_%s.jpg" />
     </image>
-  </scene>
+    <hotspot name="spot2" style="hotspot_ani_white" ath="-150" atv="0"
+      onclick="lookto(get(ath), 5, 35);
+      loadscene(bedroom1, null, MERGE,BLEND(1));
+      lookat(145, 0, 130);
+      set(view.architectural, 1.0);
+      wait(BLEND);
+      tween(view.architectural, 0.0, 2.0);
+      oninterrupt( tween(view.architectural,0.0, 0.5) );
+      lookto(0, 0, 130, smooth(100, 100, 200));
+      " />
 </krpano>
 
 
