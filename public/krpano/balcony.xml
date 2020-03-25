@@ -43,6 +43,7 @@
   </action>
   <!-- 热点跳转事件 -->
   <action name="hotspotClick" ags="scene">
+    <!-- jscall(window.Getinfo(1)) -->
     lookto(get(ath), 5, 35);
     loadscene(get(scene), null, MERGE, BLEND(1));
     lookat(145, 0, 150);
@@ -54,19 +55,19 @@
   </action>
 
   <scene name="balcony" title="阳台"  thumburl="./panorama.tiles/balcony/thumb.jpg">
-    <view hlookat="180" vlookat="0" fov="130" fovtype="MFOV" maxpixelzoom="1.5" limitview="lookat" />
+    <view hlookat="180" vlookat="0" fov="130" fovtype="MFOV" maxpixelzoom="1.5" />
     <preview url="./panorama.tiles/balcony/preview.jpg" />
     <image>
       <cube url="./panorama.tiles/balcony/pano_%s.jpg" />
     </image>
-    <hotspot
+    <!-- <hotspot
       name="spot1"
       style="hotspot_skin"
       ath="180"
       atv="0"
       tooltip="客厅"
       scene="parlour"
-      onclick="hotspotClick" />
+      onclick="hotspotClick" /> -->
   </scene>
 
 

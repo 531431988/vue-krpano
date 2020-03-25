@@ -5,7 +5,7 @@
       <cube url="./panorama.tiles/parlour/pano_%s.jpg" />
     </image>
 
-    <hotspot
+    <!-- <hotspot
     name="spot1"
     style="hotspot_skin"
     ath="0"
@@ -21,7 +21,7 @@
     atv="0"
     tooltip="客厅"
     scene="bedroom1"
-    onclick="hotspotClick" />
+    onclick="hotspotClick" /> -->
 
 </krpano>
 

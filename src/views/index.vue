@@ -13,7 +13,8 @@
 <script>
 import { Krpano } from '@/components'
 import { Sidebar, Nav, PanoList } from './components'
-import { addhotspot } from '@/utils/krpano'
+import config from '@/config'
+import hotspot from '@/mixins/hotspot'
 export default {
   components: {
     Krpano,
@@ -21,14 +22,18 @@ export default {
     Nav,
     PanoList
   },
+  mixins: [hotspot],
   data () {
     return {
       overlay: true,
       show: false,
       xml: './krpano/balcony.xml',
-      scene: '',
+      scene: 'balcony',
       krpano: null,
-      active: 0
+      active: 0,
+      hotspot: {
+
+      }
     }
   },
   computed: {
@@ -49,10 +54,11 @@ export default {
       const { krpano } = this
       this.scene = item.scene
     },
+    // 场景切换成功
     onSceneChanged (krpano, name) {
-      addhotspot(krpano, '180', '0', params => {
-        console.log('我被点了')
-      })
+      // 生成查看热点
+      this.active = Object.keys(config.hotspot).findIndex(item => item === name)
+      this.createHotSpot()
     },
     onOverlayClick () {
       this.overlay = true
@@ -60,10 +66,19 @@ export default {
     },
     onInitKrpano (krpano) {
       this.krpano = krpano
+      setTimeout(() => {
+        // 生成跳转热点
+        this.createHotSpot()
+      }, 200)
+    },
+    // 生成热点和查看按钮
+    createHotSpot () {
+      config.hotspot[this.scene].to.forEach(item => {
+        this.addhotspot(item, (current, next) => {
+          this.scene = item.name
+        })
+      })
     }
-  },
-  mounted () {
-
   }
 
 }
