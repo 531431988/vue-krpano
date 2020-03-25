@@ -84,12 +84,12 @@ export default {
       if (krpano) {
         if (scene) {
           krpano.call(`loadscene(${scene}, null, MERGE, BLEND(1))`)
-          krpano.call('lookat(145, 0, 130)')
+          krpano.call('lookat(145, 0, 150)')
           krpano.call('set(view.architectural, 1.0)')
           krpano.call('wait(BLEND)')
           krpano.call('tween(view.architectural, 0.0, 2.0)')
           krpano.call('oninterrupt( tween(view.architectural, 0.0, 0.5))')
-          krpano.call('lookto(0, 0, 130, smooth(100, 100, 200))')
+          krpano.call('lookto(get(ath),get(atv),130, smooth(100, 100, 200))')
           this.log(`scene changed: ${scene}`)
           this.$emit('change', krpano, scene)
         } else {

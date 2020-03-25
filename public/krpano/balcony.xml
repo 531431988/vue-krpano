@@ -45,12 +45,12 @@
   <action name="hotspotClick" ags="scene">
     lookto(get(ath), 5, 35);
     loadscene(get(scene), null, MERGE, BLEND(1));
-    lookat(145, 0, 130);
+    lookat(145, 0, 150);
     set(view.architectural, 1.0);
     wait(BLEND);
     tween(view.architectural, 0.0, 2.0);
     oninterrupt( tween(view.architectural, 0.0, 0.5) );
-    lookto(180,0,130, smooth(100, 100, 200));
+    lookto(get(ath),get(atv),130, smooth(100, 100, 200));
   </action>
 
   <scene name="balcony" title="阳台"  thumburl="./panorama.tiles/balcony/thumb.jpg">
