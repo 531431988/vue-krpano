@@ -1,25 +1,13 @@
-<krpano onstart="loadscene(balcony);">
-	<!-- 右键菜单 -->
-  <include url="./plugins/contextmenu.xml" />
-	<!-- 场景初始化 -->
-	<include url="./plugins/start.xml" />
-
-  <!-- 旋转配置 -->
-  <autorotate enabled="true"
-	waittime="2.0"
-	accel="1"
-	speed="10.0"
-	/>
-
+<krpano>
   <!-- 热点样式  -->
   <style name="hotspot_skin_to"
-    url="./new_spotd1_gif.png"
+    url="../skin/new_spotd1_gif.png"
     crop="0|0|128|128"
     frames="20" framewidth="128" frameheight="128" frame="0"
     onloaded="hotspot_animate();add_tooltip()"
     />
     <style name="hotspot_skin_look"
-    url="./new_spotd7_gif.png"
+    url="../skin/new_spotd7_gif.png"
     crop="0|0|128|128"
     frames="20" framewidth="128" frameheight="128" frame="0"
     onloaded="hotspot_animate();add_tooltip()"
@@ -57,44 +45,4 @@
     oninterrupt( tween(view.architectural, 0.0, 0.5) );
     lookto(get(ath),get(atv),130, smooth(100, 100, 200));
   </action> -->
-
-  <scene name="balcony" title="阳台"  thumburl="./panorama.tiles/balcony/thumb.jpg">
-    <view hlookat="180" vlookat="0" fov="130" fovtype="MFOV" maxpixelzoom="1.5" />
-    <preview url="./panorama.tiles/balcony/preview.jpg" />
-    <image>
-      <cube url="./panorama.tiles/balcony/pano_%s.jpg" />
-    </image>
-    <!-- <hotspot
-      name="spot1"
-      style="hotspot_skin"
-      ath="180"
-      atv="0"
-      tooltip="客厅"
-      scene="parlour"
-      onclick="hotspotClick" /> -->
-  </scene>
-
-
-	<scene name="parlour" title="客厅" thumburl="./panorama.tiles/parlour/thumb.jpg">
-    <include url="./parlour.xml" />
-  </scene>
-
-
-  <scene name="bedroom1" title="卧室1" thumburl="./panorama.tiles/bedroom1/thumb.jpg">
-    <include url="./bedroom1.xml" />
-  </scene>
-
-
-  <scene name="bedroom2" title="卧室2" thumburl="./panorama.tiles/bedroom2/thumb.jpg">
-    <include url="./bedroom2.xml" />
-  </scene>
-
-  <scene name="bedroom3" title="卧室3" thumburl="./panorama.tiles/bedroom3/thumb.jpg">
-    <include url="./bedroom3.xml" />
-  </scene>
-
-  <scene name="toilet" title="厕所" thumburl="./panorama.tiles/toilet/thumb.jpg">
-    <include url="./toilet.xml" />
-  </scene>
-
 </krpano>

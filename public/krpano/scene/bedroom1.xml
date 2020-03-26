@@ -1,8 +1,8 @@
 ﻿<krpano>
     <view  hlookat="0" vlookat="0" fov="130" />
-    <preview url="./panorama.tiles/bedroom1/preview.jpg" />
+    <preview url="../panorama.tiles/bedroom1/preview.jpg" />
     <image>
-      <cube url="./panorama.tiles/bedroom1/pano_%s.jpg" />
+      <cube url="../panorama.tiles/bedroom1/pano_%s.jpg" />
     </image>
     <!-- <hotspot
       name="spot1"
