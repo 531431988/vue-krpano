@@ -1,10 +1,7 @@
 <template>
   <div class="krpano">
-    <van-overlay :show="overlay" :custom-style="style" @click="onOverlayClick" />
-    <Nav @on-click="onNavClick" />
-    <transition name="van-slide-up">
-      <PanoList :active="active" v-if="show" @on-click="onListClick" />
-    </transition>
+    <Nav />
+    <!-- <PanoList :active="active" v-if="show" @on-click="onListClick" /> -->
     <Sidebar :krpano="krpano" />
     <Krpano @init="onInitKrpano" @change="onSceneChanged" ref="krpano" :xml="xml" :scene="scene" />
   </div>
@@ -26,44 +23,25 @@ export default {
   mixins: [hotspot],
   data () {
     return {
-      overlay: true,
-      show: false,
       xml: './krpano/balcony.xml',
       scene: 'balcony',
       krpano: null,
-      active: 0,
-      hotspot: {
-
-      }
+      active: 0
     }
   },
-  computed: {
-    style () {
-      return {
-        background: 'transparent',
-        visibility: this.show ? 'initial' : 'hidden'
-      }
+  provide () {
+    return {
+      getContext: () => ({
+        active: this.active
+      })
     }
   },
   methods: {
-    onNavClick () {
-      this.show = !this.show
-    },
-    // 切换场景
-    onListClick (item, index) {
-      this.active = index
-      const { krpano } = this
-      this.scene = item.scene
-    },
     // 场景切换成功
     onSceneChanged (krpano, name) {
       // 生成查看热点
       this.active = Object.keys(config.hotspot).findIndex(item => item === name)
       this.createHotSpot()
-    },
-    onOverlayClick () {
-      this.overlay = true
-      this.show = false
     },
     onInitKrpano (krpano) {
       this.krpano = krpano
@@ -89,6 +67,13 @@ export default {
         })
       })
     }
+  },
+  mounted () {
+    this.$bus.$on('on-pano-list-click', (item, index) => {
+      this.active = index
+      const { krpano } = this
+      this.scene = item.scene
+    })
   }
 
 }

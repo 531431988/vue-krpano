@@ -11,6 +11,7 @@ import {
   GoodsActionIcon,
   GoodsActionButton
 } from 'vant'
+import '@vant/touch-emulator'
 import '../less/theme.less'
 const components = {
   Button,

@@ -1,4 +1,5 @@
 <template>
+<div>
   <van-goods-action>
     <div class="tc" @click="onClick">
       <van-icon class="scene-btn" name="wap-nav" size="6vw" color="#fff" />
@@ -17,13 +18,38 @@
       </div>
     </div>
   </van-goods-action>
+  <van-overlay :show="overlay" :custom-style="style" @click="onOverlayClick" />
+  <PanoList v-if="show" />
+</div>
 </template>
 <script>
+import PanoList from './PanoList'
 export default {
+  components: {
+    PanoList
+  },
+  data () {
+    return {
+      overlay: true,
+      show: false
+    }
+  },
+  computed: {
+    style () {
+      return {
+        background: 'transparent',
+        visibility: this.show ? 'initial' : 'hidden'
+      }
+    }
+  },
   methods: {
     onClick () {
-      this.$emit('on-click')
-    }
+      this.show = !this.show
+    },
+    onOverlayClick () {
+      this.overlay = true
+      this.show = false
+    },
   }
 }
 </script>

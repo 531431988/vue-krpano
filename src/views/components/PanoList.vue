@@ -12,16 +12,12 @@
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 export default {
-  props: {
-    active: {
-      type: Number,
-      default: 0
-    }
-  },
   components: {
     Swiper,
     SwiperSlide
   },
+
+  inject: ['getContext'],
   data () {
     return {
       swiperOptions: {
@@ -62,17 +58,21 @@ export default {
   computed: {
     swiper () {
       return this.$refs.swiper.$swiper
+    },
+    context () {
+      return this.getContext()
     }
   },
   methods: {
     handleClickSlide (index) {
       this.swiper.slideTo(index, 1000, false)
-      this.$emit('on-click', this.list[index], index)
+      this.$bus.$emit('on-pano-list-click', this.list[index], index)
     }
   },
   mounted () {
-    if (this.active) {
-      this.swiper.slideTo(this.active, 1000, false)
+    const { active } = this.context
+    if (active) {
+      this.swiper.slideTo(active, 1000, false)
     }
   }
 
