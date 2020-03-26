@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar vui-flex vui-flex-dir-top vui-flex-wrap">
-    <van-icon name="qr" size="6vw" color="#fff" />
-    <van-icon name="music-o" size="6vw" color="#fff" />
-    <van-icon name="replay" size="6vw" color="#fff" @click="onClick('auto')" />
-    <!-- <van-icon name="expand-o" size="6vw" color="#fff" @click="onClick('fullscreen')" /> -->
+    <van-icon name="qr" />
+    <van-icon name="music-o" />
+    <van-icon name="replay" :class="{active: isAutoRotate}" @click="onClick('auto')" />
+    <van-icon name="expand-o" :class="{active: isFullscreen}" @click="onClick('fullscreen')" />
   </div>
 </template>
 <script>
@@ -11,7 +11,8 @@ export default {
   props: ['krpano'],
   data () {
     return {
-      isAutoRotate: true
+      isAutoRotate: false,
+      isFullscreen: false
     }
   },
   methods: {
@@ -21,16 +22,23 @@ export default {
         case 'auto':
           // 设置自动旋转
           this.isAutoRotate = !this.isAutoRotate
-          krpano.set('autorotate.enabled', this.isAutoRotate)
+          krpano.call('switch(autorotate.enabled)')
+
           // 获取当前视角
-          var hlookat = krpano.get('view.hlookat')
-          var vlookat = krpano.get('view.vlookat')
-          var fov = krpano.get('view.fov')
-          var distortion = krpano.get('view.distortion')
-          console.log(`hlookat="${hlookat.toFixed(2)}" vlookat="${vlookat.toFixed(2)}" fov="${fov.toFixed(2)}" distortion="${distortion.toFixed(2)}"`)
+          // var hlookat = krpano.get('view.hlookat')
+          // var vlookat = krpano.get('view.vlookat')
+          // var fov = krpano.get('view.fov')
+          // var distortion = krpano.get('view.distortion')
+          // console.log(`hlookat="${hlookat.toFixed(2)}" vlookat="${vlookat.toFixed(2)}" fov="${fov.toFixed(2)}" distortion="${distortion.toFixed(2)}"`)
           break
         case 'fullscreen':
-          krpano.set('fullscreen', true)
+          // krpano.call('switch(fullscreen)')
+          this.$fullscreen.toggle(document.querySelector('#app'), {
+            wrap: false,
+            callback: (fullscreen) => {
+              this.isFullscreen = fullscreen
+            }
+          })
           break
         default:
           break
@@ -46,15 +54,20 @@ export default {
   top: 0;
   right: 0;
   padding: 15px;
-  z-index: 300;
+  z-index: 3000;
   .van-icon {
-    width: 72px;
-    height: 72px;
+    height: 36px;
+    width: 36px;
+    line-height: 36px;
     border-radius: 50%;
-    background-color: rgba(52, 58, 64, 0.65);
+    background-color: rgba(52,58,64,.65);
     text-align: center;
-    line-height: 72px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 24px;
+    &.active{
+      background: @primary-color
+    }
   }
 }
 </style>

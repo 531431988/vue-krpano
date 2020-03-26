@@ -22,7 +22,7 @@ module.exports = {
       'import',
       {
         libraryName: 'vant',
-        libraryDirectory: 'lib',
+        libraryDirectory: 'es',
         style: name => `${name}/style/less`
       }, 'vant'
     ]

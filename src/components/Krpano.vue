@@ -43,6 +43,7 @@ export default {
   methods: {
     createPano () {
       loadScript('./krpano/krpano.js', 'embedpano').then(() => {
+        const { embedpano } = window
         embedpano({
           swf: './public/krpano/krpano.swf',
           xml: this.xml,
@@ -117,7 +118,10 @@ export default {
 
 <style lang="less" scoped>
 .vue-krpano {
-  width: 100%;
-  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: absolute;
 }
 </style>

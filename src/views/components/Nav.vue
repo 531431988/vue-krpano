@@ -1,25 +1,27 @@
 <template>
-<div>
-  <van-goods-action>
+<div class="bottom-bar">
+  <van-goods-action v-if="showBar">
     <div class="tc" @click="onClick">
-      <van-icon class="scene-btn" name="wap-nav" size="6vw" color="#fff" />
+      <van-icon name="wap-nav" />
       <p>切换场景</p>
     </div>
     <div class="vui-flex-item tr">
       <div class="vui-flex vui-flex-right">
         <div class="tc mr30">
-          <van-icon class="scene-btn" name="good-job-o" size="6vw" color="#fff" />
+          <van-icon name="good-job-o" />
           <p>5</p>
         </div>
         <div class="tc">
-          <van-icon class="scene-btn" name="chat-o" size="6vw" color="#fff" />
+          <van-icon name="chat-o" />
           <p>说一说</p>
         </div>
       </div>
     </div>
   </van-goods-action>
   <van-overlay :show="overlay" :custom-style="style" @click="onOverlayClick" />
-  <PanoList v-if="show" />
+  <transition name="fade" >
+    <PanoList v-if="show" />
+  </transition>
 </div>
 </template>
 <script>
@@ -30,6 +32,7 @@ export default {
   },
   data () {
     return {
+      showBar: true,
       overlay: true,
       show: false
     }
@@ -44,28 +47,33 @@ export default {
   },
   methods: {
     onClick () {
-      this.show = !this.show
+      this.show = true
+      this.showBar = false
     },
     onOverlayClick () {
       this.overlay = true
       this.show = false
-    },
+      this.showBar = true
+    }
   }
 }
 </script>
 <style lang="less" scoped>
-.van-goods-action {
-  padding: 10px;
-  color: #fff;
-  font-size: 14px;
-  background: transparent;
-  z-index: 99;
-  height: 120px;
-  .scene-btn {
-    margin: auto;
-    width: 56px;
-    height: 56px;
-    border-radius: 100px;
+.bottom-bar{
+  .van-goods-action {
+    padding: 10px;
+    color: #fff;
+    font-size: 14px;
+    background: transparent;
+    z-index: 99;
+    .van-icon {
+      color: #fff;
+      font-size: 24px;
+      margin: auto;
+    }
   }
+}
+.van-overlay{
+  z-index: 999
 }
 </style>

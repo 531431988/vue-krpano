@@ -13,14 +13,14 @@ export default {
       }
       krpano.set(`hotspot[${name}].ath`, ath)
       krpano.set(`hotspot[${name}].atv`, atv)
-      krpano.set(`hotspot[${name}].scale`, .5)
+      krpano.set(`hotspot[${name}].scale`, 0.5)
       krpano.set(`hotspot[${name}].tooltip`, title)
       if (krpano.get('device.html5')) {
         krpano.set(`hotspot[${name}].onclick`, function (params) {
           callback && callback(krpano.get('xml.scene'), params)
         }.bind(null, name))
       }
-    },
+    }
     // 点击 hotspot
     // hotspotClick (name) {
     //   this.scene = name

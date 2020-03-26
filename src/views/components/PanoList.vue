@@ -1,7 +1,7 @@
 <template>
-  <swiper ref="swiper" :options="swiperOptions" @click-slide="handleClickSlide">
+  <swiper class="pano-list" ref="swiper" :options="swiperOptions" @click-slide="handleClickSlide">
     <swiper-slide v-for="(item, index) in list" :key="index">
-      <van-image fit="cover" width="100%" :src="item.src" />
+      <van-image fit="cover" :src="item.src" />
       <p class="title">{{item.title}}</p>
     </swiper-slide>
     <div class="swiper-scrollbar" slot="scrollbar"></div>
@@ -16,12 +16,11 @@ export default {
     Swiper,
     SwiperSlide
   },
-
   inject: ['getContext'],
   data () {
     return {
       swiperOptions: {
-        slidesPerView: 3,
+        slidesPerView: window.innerWidth > 1025 ? 8 : 2,
         centeredSlides: true,
         scrollbar: {
           el: '.swiper-scrollbar',
@@ -55,6 +54,9 @@ export default {
       }]
     }
   },
+  created () {
+    
+  },
   computed: {
     swiper () {
       return this.$refs.swiper.$swiper
@@ -79,17 +81,18 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-.swiper-container {
+.pano-list {
   position: absolute;
   left: 0;
-  bottom: 120px;
+  bottom: 0;
   width: 100%;
   z-index: 999;
   padding: 10px;
-  background: rgba(0, 0, 0, 0.2);
+  background-color: rgba(52,58,64,.65);
   .swiper-slide {
-    border: 3px solid transparent;
+    border: 2px solid #c3c4c8;
     overflow: hidden;
+    height: 90px;
     &:not(:first-child) {
       margin-left: 15px;
     }

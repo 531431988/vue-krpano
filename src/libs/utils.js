@@ -12,7 +12,6 @@ export const getToken = (name = TOKEN_KEY) => {
   return token || false
 }
 
-
 export const loadScript = (src, obj) => {
   if (typeof window[obj] === 'function') {
     // 如果已经加载就直接放回

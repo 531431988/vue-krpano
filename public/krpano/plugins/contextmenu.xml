@@ -7,7 +7,7 @@
 -->
 <krpano>
 	<!-- the contextmenu -->
-	<contextmenu fullscreen="true" versioninfo="false">
+	<contextmenu fullscreen="false" versioninfo="false">
 		<item name="kr" caption="光谷信息" onclick="openurl('http://baidu.com')"  />
 		<!-- <item name="fs" caption="全屏" /> -->
 		<item name="nv" caption="正常模式" onclick="cm_normal_view();" showif="view.vlookatrange == 180" separator="true"      />

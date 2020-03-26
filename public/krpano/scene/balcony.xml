@@ -7,7 +7,7 @@
 	<include url="../skin/hotspot_skin.xml" />
 
   <!-- 旋转配置 -->
-  <autorotate enabled="true"
+  <autorotate enabled="false"
 	waittime="2.0"
 	accel="1"
 	speed="10.0"

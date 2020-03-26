@@ -21,21 +21,6 @@ module.exports = {
     //   .use(
     //     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn$/)
     //   )
-    // 一个可以将vue标签内样式px转换vw的 webpack loader
-    config.module
-      .rule('vue')
-      .test(/\.vue$/)
-      .use('style-vw-loader')
-      .loader('style-vw-loader')
-      .options({
-        unitToConvert: 'px',
-        viewportWidth: 750,
-        unitPrecision: 5,
-        viewportUnit: 'vw',
-        fontViewportUnit: 'vw',
-        minPixelValue: 1
-      })
-      .end()
     // 添加别名
     config.resolve.alias
       //内部为正则表达式  vue结尾的

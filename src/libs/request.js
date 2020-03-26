@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import axios from 'axios'
-import store from '@/store'
 import { Notify } from 'vant'
 import { VueAxios } from './axios'
-import { ACCESS_TOKEN } from '@/store/mutation-types'
+const ACCESS_TOKEN = 'token'
 // 创建 axios 实例
 const service = axios.create({
   baseURL: process.env.VUE_APP_API_BASE_URL, // api base_url
@@ -13,19 +12,8 @@ const service = axios.create({
 const err = (error) => {
   if (error.response) {
     const data = error.response.data
-    const token = Vue.ls.get(ACCESS_TOKEN)
     if (error.response.status === 403) {
       Notify({ type: 'danger', message: data.message })
-    }
-    if (error.response.status === 401 && !(data.result && data.result.isLogin)) {
-      Notify({ type: 'danger', message: 'Authorization verification failed' })
-      if (token) {
-        store.dispatch('Logout').then(() => {
-          setTimeout(() => {
-            window.location.reload()
-          }, 1500)
-        })
-      }
     }
   }
   return Promise.reject(error)

@@ -1,15 +1,14 @@
 <template>
-  <div class="krpano">
-    <Nav />
-    <!-- <PanoList :active="active" v-if="show" @on-click="onListClick" /> -->
-    <Sidebar :krpano="krpano" />
-    <Krpano @init="onInitKrpano" @change="onSceneChanged" ref="krpano" :xml="xml" :scene="scene" />
-  </div>
+<div id="app">
+  <Krpano @init="onInitKrpano" @change="onSceneChanged" ref="krpano" :xml="xml" :scene="scene" />
+  <Nav ref="nav" />
+  <Sidebar :krpano="krpano" />
+</div>
 </template>
 
 <script>
 import { Krpano } from '@/components'
-import { Sidebar, Nav, PanoList } from './components'
+import { Sidebar, Nav } from './components'
 import config from '@/config'
 import hotspot from '@/mixins/hotspot'
 import { ImagePreview } from 'vant'
@@ -17,13 +16,12 @@ export default {
   components: {
     Krpano,
     Sidebar,
-    Nav,
-    PanoList
+    Nav
   },
   mixins: [hotspot],
   data () {
     return {
-      xml: './krpano/balcony.xml',
+      xml: './krpano/scene/balcony.xml',
       scene: 'balcony',
       krpano: null,
       active: 0
@@ -71,22 +69,12 @@ export default {
   mounted () {
     this.$bus.$on('on-pano-list-click', (item, index) => {
       this.active = index
-      const { krpano } = this
       this.scene = item.scene
+      this.$refs.nav.showBar = true
     })
   }
 
 }
 </script>
 <style lang="less" scoped>
-.krpano {
-  height: 100%;
-  position: relative;
-  .enter-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-  }
-}
 </style>
