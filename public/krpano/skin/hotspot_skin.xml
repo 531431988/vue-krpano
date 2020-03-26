@@ -1,17 +1,19 @@
 <krpano>
   <!-- 热点样式  -->
-  <style name="hotspot_skin_to"
-    url="../skin/new_spotd1_gif.png"
+  <style
+    name="hotspot_skin_to"
+    url="../skin/hotspot_skin_to.png"
     crop="0|0|128|128"
     frames="20" framewidth="128" frameheight="128" frame="0"
     onloaded="hotspot_animate();add_tooltip()"
-    />
-    <style name="hotspot_skin_look"
-    url="../skin/new_spotd7_gif.png"
+  />
+  <style
+    name="hotspot_skin_look"
+    url="../skin/hotspot_skin_look.png"
     crop="0|0|128|128"
     frames="20" framewidth="128" frameheight="128" frame="0"
     onloaded="hotspot_animate();add_tooltip()"
-    />
+  />
   <!-- 热点动画 -->
   <action name="hotspot_animate">
 		if(loaded,

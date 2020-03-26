@@ -14,12 +14,12 @@ export default {
       type: String
     },
     scene: {
-      type: String
+      type: String,
+      default: 'balcony'
     }
   },
   data () {
     return {
-      createLock: false,
       krpano: null
     }
   },
@@ -104,7 +104,7 @@ export default {
   },
   mounted () {
     this.createPano()
-    this.$on(['init', 'xmlChanged'], this.loadScene)
+    // this.$on(['init', 'xmlChanged'], this.loadScene)
   },
   beforeDestroy () {
     const { removepano } = window

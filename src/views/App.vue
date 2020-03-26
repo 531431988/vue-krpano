@@ -46,16 +46,16 @@ export default {
       setTimeout(() => {
         // 生成跳转热点
         this.createHotSpot()
-      }, 1000)
+      }, 400)
     },
     // 生成热点和查看按钮
     createHotSpot () {
-      config.hotspot[this.scene].to.forEach(item => {
+      const {to, look = null} = config.hotspot[this.scene]
+      to.forEach(item => {
         this.addhotspot(item, (current, next) => {
           this.scene = item.name
         })
       })
-      let look = config.hotspot[this.scene].look
       look && look.forEach(item => {
         this.addhotspot(item, (current, next) => {
           ImagePreview([
