@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { addClass } from '@/utils/dom'
+import { addClass } from '@/libs/dom'
 
 export default {
   height: {

@@ -24,6 +24,6 @@
     ├── plugins     插件配置
     ├── router      路由配置
     ├── store       vuex配置
-    ├── utils       工具类库
+    ├── libs        工具类库
     ├── views       页面文件
 ```

@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { loadScript } from '@/libs/utils'
 export default {
   props: {
     xml: {
@@ -30,7 +31,7 @@ export default {
         this.log(`xml changed: ${newXml}`)
       }
     },
-    scene: function () {
+    scene () {
       this.loadScene()
     }
   },
@@ -41,12 +42,7 @@ export default {
   },
   methods: {
     createPano () {
-      const { embedpano, removepano } = window
-      if (!(embedpano && removepano)) {
-        throw new Error('krpano player is required')
-      }
-      if (!this.createLock) {
-        this.createLock = true
+      loadScript('./krpano/krpano.js', 'embedpano').then(() => {
         embedpano({
           swf: './public/krpano/krpano.swf',
           xml: this.xml,
@@ -71,13 +67,12 @@ export default {
           // 准备就绪回调函数
           onready: this.krpanoOnreadyCallback
         })
-      }
+      })
     },
     krpanoOnreadyCallback (krpano) {
       this.krpano = krpano
       this.log('创建成功')
       this.$emit('init', this.krpano)
-      this.createLock = false
     },
     loadScene () {
       const { krpano, scene } = this

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueStorage from 'vue-ls'
-import { VueAxios } from '@/utils/request'
-import config from '@/config/index'
+import { VueAxios } from '@/libs/request'
+import config from '@/config'
 import importDirective from '@/directive'
 
 importDirective()

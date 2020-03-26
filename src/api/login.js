@@ -1,5 +1,5 @@
 
-import { axios } from '@/utils/request'
+import { axios } from '@/libs/request'
 
 export function login (data) {
   return axios({

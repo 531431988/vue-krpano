@@ -42,7 +42,7 @@ export default {
 <style lang="less" scoped>
 .sidebar {
   position: absolute;
-  height: calc(100% - 120px);
+  // height: calc(100% - 120px);
   top: 0;
   right: 0;
   padding: 15px;
