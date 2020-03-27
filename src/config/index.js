@@ -41,7 +41,10 @@ export default {
         title: '卧室1'
       }],
       look: [{
-        ath: 180,
+        ath: 90,
+        atv: 20
+      }, {
+        ath: 160,
         atv: 0
       }]
     },
@@ -68,8 +71,11 @@ export default {
         title: '厕所'
       }],
       look: [{
-        ath: 180,
-        atv: 0
+        ath: 245,
+        atv: -20
+      }, {
+        ath: 155,
+        atv: -20
       }]
     },
     bedroom2: {
@@ -94,6 +100,9 @@ export default {
       look: [{
         ath: 180,
         atv: 0
+      }, {
+        ath: 270,
+        atv: 0
       }]
     },
     toilet: {
@@ -104,7 +113,10 @@ export default {
         title: '卧室1'
       }],
       look: [{
-        ath: 180,
+        ath: 130,
+        atv: 40
+      }, {
+        ath: 0,
         atv: 0
       }]
     }

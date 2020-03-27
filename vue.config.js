@@ -47,18 +47,20 @@ module.exports = {
         }
       })
     // 压缩图片
-    config.module
-      .rule('images')
-      .use('image-webpack-loader')
-      .loader('image-webpack-loader')
-      .options({
-        mozjpeg: { progressive: true, quality: 65 },
-        optipng: { enabled: false },
-        pngquant: { quality: '65-90', speed: 4 },
-        gifsicle: { interlaced: false },
-        webp: { quality: 75 }
-      })
-    return config
+    if (env) {
+      config.module
+        .rule('images')
+        .use('image-webpack-loader')
+        .loader('image-webpack-loader')
+        .options({
+          mozjpeg: { progressive: true, quality: 65 },
+          optipng: { enabled: false },
+          pngquant: { quality: '65-90', speed: 4 },
+          gifsicle: { interlaced: false },
+          webp: { quality: 75 }
+        })
+      return config
+    }
   },
   configureWebpack: config => {
     config.resolve.extensions = ['.vue', '.js', '.jsx', '.json', '.less', '.css', '.scss', '.jpg', '.png', '.svg']
