@@ -1,7 +1,6 @@
 
 const path = require('path')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i
 const env = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test'
 const resolve = dir => path.join(__dirname, dir)
@@ -59,13 +58,6 @@ module.exports = {
         gifsicle: { interlaced: false },
         webp: { quality: 75 }
       })
-    if (env) {
-      config.plugin('webpack-report').use(BundleAnalyzerPlugin, [
-        {
-          analyzerMode: 'static'
-        }
-      ])
-    }
     return config
   },
   configureWebpack: config => {

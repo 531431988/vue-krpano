@@ -46,6 +46,8 @@ export default {
       setTimeout(() => {
         // 生成跳转热点
         this.createHotSpot()
+        // 自动播放
+        // this.krpano.call('bgsnd_start')
       }, 400)
     },
     // 生成热点和查看按钮

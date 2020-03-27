@@ -20,6 +20,7 @@
     "v-click-outside": "^3.0.1",
     "vant": "^2.5.7",
     "vue": "^2.6.11",
+    "vue-aplayer": "^1.6.1",
     "vue-awesome-swiper": "^4.0.3",
     "vue-fullscreen": "^2.1.6",
     "vue-ls": "^3.2.1",

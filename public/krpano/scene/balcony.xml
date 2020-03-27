@@ -13,6 +13,19 @@
 	speed="10.0"
 	/>
 
+  <plugin name="soundinterface"
+    url.flash="../plugins/soundinterface.swf"
+    url.html5="../plugins/soundinterface.js"
+    rootpath=""
+    preload="true"
+    keep="true"
+    />
+	<action name="bgsnd_start" autorun="onstart">
+  playsound(bgsnd, '//localhost:8081/viewer/music.mp3|//localhost:8081/viewer/music.ogg', 0);
+	</action>
+  <action name="bgsnd_stop">
+  pausesoundtoggle(bgsnd);
+	</action>
 
   <scene name="balcony" title="阳台"  thumburl="../panorama.tiles/balcony/thumb.jpg">
     <view hlookat="180" vlookat="0" fov="130" fovtype="MFOV" maxpixelzoom="1.5" />
