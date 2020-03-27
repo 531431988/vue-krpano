@@ -1,9 +1,9 @@
 <template>
-<div id="app">
-  <Krpano @init="onInitKrpano" @change="onSceneChanged" ref="krpano" :xml="xml" :scene="scene" />
-  <Nav ref="nav" />
-  <Sidebar :krpano="krpano" />
-</div>
+  <div id="app">
+    <Krpano @init="onInitKrpano" @change="onSceneChanged" ref="krpano" :xml="xml" :scene="scene" />
+    <Nav ref="nav" />
+    <Sidebar :krpano="krpano" />
+  </div>
 </template>
 
 <script>
@@ -52,7 +52,7 @@ export default {
     },
     // 生成热点和查看按钮
     createHotSpot () {
-      const {to, look = null} = config.hotspot[this.scene]
+      const { to, look = null } = config.hotspot[this.scene]
       to.forEach(item => {
         this.addhotspot(item, (current, next) => {
           this.scene = item.name

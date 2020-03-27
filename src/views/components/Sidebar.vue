@@ -66,7 +66,7 @@ export default {
   top: 0;
   right: 0;
   padding: 15px;
-  z-index: 3000;
+  z-index: 1000;
   .van-icon {
     height: 36px;
     width: 36px;

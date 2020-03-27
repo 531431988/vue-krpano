@@ -54,9 +54,6 @@ export default {
       }]
     }
   },
-  created () {
-    
-  },
   computed: {
     swiper () {
       return this.$refs.swiper.$swiper
@@ -88,7 +85,7 @@ export default {
   width: 100%;
   z-index: 999;
   padding: 10px;
-  background-color: rgba(52,58,64,.65);
+  background-color: rgba(52, 58, 64, 0.65);
   .swiper-slide {
     border: 2px solid #c3c4c8;
     overflow: hidden;

@@ -21,7 +21,7 @@
     keep="true"
     />
 	<action name="bgsnd_start" autorun="onstart">
-  playsound(bgsnd, '//localhost:8081/viewer/music.mp3|//localhost:8081/viewer/music.ogg', 0);
+  playsound(bgsnd, 'http://192.168.7.12:8080/krpano/music.mp3|//http://192.168.7.12:8080/krpano/music.ogg', 0);
 	</action>
   <action name="bgsnd_stop">
   pausesoundtoggle(bgsnd);

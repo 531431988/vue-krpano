@@ -2,7 +2,7 @@
 const path = require('path')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i
-const env = process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'test'
+const env = process.env.NODE_ENV === 'production'
 const resolve = dir => path.join(__dirname, dir)
 module.exports = {
   chainWebpack: config => {
