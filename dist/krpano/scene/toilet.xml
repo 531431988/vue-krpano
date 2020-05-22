@@ -1,0 +1,18 @@
+﻿<krpano>
+  <view  hlookat="0" vlookat="0" fov="130" />
+  <preview url="../panorama.tiles/toilet/preview.jpg" />
+  <image>
+    <cube url="../panorama.tiles/toilet/pano_%s.jpg" />
+  </image>
+
+  <!-- <hotspot
+    name="spot2"
+    style="hotspot_skin"
+    ath="-90"
+    atv="0"
+    tooltip="卧室1"
+    scene="bedroom1"
+    onclick="hotspotClick" /> -->
+</krpano>
+
+
