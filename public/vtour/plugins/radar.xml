@@ -1,39 +1,5 @@
 <krpano>
 
-
-	<!-- 代码复制 开始位置 -->
- 
-	<!-- 地图部分 url对应的是地图本身的路径，按照自己的文件修改url中数值 -->
-	<layer name="map" url="../skin/zgy.png" keep="true" handcursor="false" capture="false"
-	       align="righttop" ox="-10" oy="40"
-	       scale="0.25" scalechildren="true"
-	       onclick="openmap();"
-	       >
-
-		<!-- 雷达 (也覆盖在地图点上, 但在激活点图像后面) -->
-		<layer name="radar" 
-		       url.flash="%SWFPATH%/plugins/radar.swf"
-		       url.html5="%SWFPATH%/plugins/radar.js"
-		       align="lefttop" edge="center" zorder="1"
-		       scale.mobile="1.5"
-		       fillalpha="0.5" fillcolor="0x7F5F3F"
-		       linewidth="1.0" linecolor="0xE0E0A0" linealpha="0.5"
-		       />
- 
-       	<!-- 地图点图像部分 url可以设置 用style来统一处理 所有layer都载入了一个名为mapspot的style，注意这里spot是由0开始，而不是由1开始的，因此在一般情况下，地图点与场景一一对应，而场景的index是从0开始的，所以我们可以利用这一点提高代码的可读性 -->
-	
-		<layer name="spot0" style="mapspot" x="182" y="312" zorder="1" text="北边正门" onclick="mapspot_loadscene();" />
-		<layer name="spot6" style="mapspot" x="232" y="422" zorder="1" text="北边 餐厅" onclick="mapspot_loadscene();" />
-		<layer name="spot7" style="mapspot" x="682" y="176" zorder="1" text="洗手间" onclick="mapspot_loadscene();" />  
-		<layer name="spot5" style="mapspot" x="582" y="380" zorder="1" text="北边大厅" onclick="mapspot_loadscene();" />
-
-		<!-- 激活点图像 (覆盖在普通的地图点上) -->
-		<layer name="activespot" url="../skin/loc_cur.png" 
-		       align="lefttop" edge="center" zorder="2" scale.mobile="2"
-		       />
- 
-	</layer>
- 
 	<style name="mapspot"  url="../skin/loc.png"  align="lefttop" edge="center" scale.mobile="2" />
  
 	<!-- 地图打开部分 - 缩放到100% (如果屏幕小的话则可能更小) -->
