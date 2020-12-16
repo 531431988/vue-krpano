@@ -11,7 +11,7 @@
       <span
         v-if="key === '0-0-1'"
         slot="title"
-        slot-scope="{ key, value }"
+        slot-scope="{ key }"
         style="color: #08c"
       >
         中驿馆
@@ -23,7 +23,6 @@
 
 <script>
 import { Krpano } from '@/components'
-// import './vtour/hotspot/json/zyg.json'
 export default {
   components: {
     Krpano

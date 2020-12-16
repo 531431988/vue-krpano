@@ -2,15 +2,30 @@
   "scene_01": {
     "look": [
       {
+        "id": "1",
         "text": "测试点",
         "ath": 171.925,
-        "atv": 7.188
+        "atv": 7.188,
+        "type": "text"
       },
       {
+        "id": "2",
         "text": "广场球机",
         "ath": -123.450,
         "atv": 20,
-        "icon": "pointer"
+        "icon": "pointer",
+        "type": "video"
+      }
+    ]
+  },
+  "scene_02": {
+    "look": [
+      {
+        "id": "1",
+        "text": "场景2测试点",
+        "ath": 171.925,
+        "atv": 7.188,
+        "type": "text"
       }
     ]
   }
