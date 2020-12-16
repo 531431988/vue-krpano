@@ -17,7 +17,7 @@
 		<hotspot name="spot4" style="skin_hotspotstyle" ath="-4.970" atv="10.852" linkedscene="scene_11" text="南边 正门" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" />
 
 		<hotspot name="spot5" style="skin_hotspotstyle" ath="171.925" atv="7.188" linkedscene="scene_02" text="北边 正门" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" />
-		<hotspot name="spot8" text="广场球机" style="skin_hotspotstyle" ath="-123.450" atv="16.948" linkedscene="" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd8_gif.png" onclick="videoClick()" />
+		
 		
 
 	</scene>

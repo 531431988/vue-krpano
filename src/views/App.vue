@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <a-tree-select
-      v-model="value"
       style="position:absolute;z-index: 1;width: 200px"
       :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
       :tree-data="treeData"
@@ -18,12 +17,7 @@
         中驿馆
       </span>
     </a-tree-select>
-    <Krpano
-      @init="onInitKrpano"
-      @change="onSceneChanged"
-      ref="krpano"
-      :xml="xml"
-    />
+    <Krpano :name="name" />
   </div>
 </template>
 
@@ -36,7 +30,6 @@ export default {
   },
   data () {
     return {
-      value: undefined,
       treeData: [
         {
           title: '黄冈市',
@@ -65,42 +58,14 @@ export default {
           key: '0-1'
         }
       ],
-      xml: '../vtour/scene/zyg.xml',
-      krpano: null
+      name: 'zyg'
     }
   },
   methods: {
     onSelect (value, node) {
-      this.xml = `../scene/${node.dataRef.scene}.xml`
-      this.createHotSpot()
-    },
-    onInitKrpano (krpano) {
-      this.krpano = krpano
-      this.createHotSpot()
-    },
-    // 场景切换成功
-    onSceneChanged (krpano) {
-      console.log('场景切换成功')
-      this.createHotSpot()
-    },
-    createHotSpot () {
-      const name = 'demo'
-      const { krpano } = this
-      setTimeout(() => {
-        if (krpano.get('device.html5')) {
-          krpano.call(`addhotspot(${name})`)
-          krpano.call(`hotspot[${name}].loadstyle(hotspot_skin_look)`)
-          krpano.set(`hotspot[${name}].ath`, 171.925)
-          krpano.set(`hotspot[${name}].atv`, 7.188)
-          krpano.set(`hotspot[${name}].scale`, 0.5)
-          krpano.set(`hotspot[${name}].tooltip`, '测试')
-          krpano.set(`hotspot[${name}].onclick`, function (params) {
-            console.log(krpano.get('xml.scene'), params)
-            console.log(krpano.get('hotspot'))
-          }.bind(null, name))
-        }
-      }, 500)
+      this.name = node.dataRef.scene
     }
+
   },
   mounted () {
   }

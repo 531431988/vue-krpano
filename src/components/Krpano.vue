@@ -11,14 +11,15 @@ export default {
   data () {
     return {
       krpano: null,
+      scene: 'scene_01',
       createLock: false
     }
   },
   watch: {
-    '$attrs.xml' (newXml) {
-      console.log(newXml)
+    '$attrs.name' (newXml) {
       if (this.krpano && newXml) {
-        this.krpano.call(`loadpano(${newXml},null,IGNOREKEEP);loadscene(scene_01);`)
+        this.krpano.call(`loadpano(${newXml}.xml,null,IGNOREKEEP);loadscene(scene_01);`)
+        this.createHotSpot()
       }
     }
   },
@@ -41,7 +42,7 @@ export default {
           // 嵌入容器id
           target: this.id,
           // swf: './public/vtour/tour.swf',
-          xml: this.$attrs.xml,
+          xml: `./vtour/scene/${this.$attrs.name}.xml`,
           // 背景颜色
           // bgcolor: '#000000',
           // html5模式
@@ -63,12 +64,43 @@ export default {
     },
     krpanoOnreadyCallback (krpano) {
       this.krpano = krpano
+      this.createHotSpot()
       this.$emit('init', this.krpano)
+    },
+    createHotSpot () {
+      setTimeout(() => {
+        const { krpano } = this
+        this.scene = krpano.get('xml.scene')
+        const { look = [] } = require(`../../public/vtour/hotspot/json/${this.$attrs.name}.json`)[this.scene]
+        look && look.forEach(({ name = '', ath, atv, text, icon = '' }) => {
+          name += `hs${((Date.now() + Math.random()) | 0)}`
+          krpano.call(`addhotspot(${name})`)
+          // krpano.set(`hotspot[${name}].url`, './krpano/new_spotd7_gif.png')
+          if (icon === 'pointer') {
+            krpano.call(`hotspot[${name}].loadstyle(hotspot_skin_pointer)`)
+          } else {
+            krpano.call(`hotspot[${name}].loadstyle(hotspot_skin_look)`)
+          }
+          console.log('name', name)
+          krpano.set(`hotspot[${name}].ath`, ath)
+          krpano.set(`hotspot[${name}].atv`, atv)
+          krpano.set(`hotspot[${name}].scale`, 0.5)
+          krpano.set(`hotspot[${name}].tooltip`, text)
+          if (krpano.get('device.html5')) {
+            krpano.set(`hotspot[${name}].onclick`, function (params) {
+              console.log(krpano.get('xml.scene'), params)
+              console.log(krpano.get('hotspot'))
+            }.bind(null, name))
+          }
+        })
+      }, 500)
     }
   },
   mounted () {
     this.createPano()
+    // 切换场景
     window.changeScene = krpano => {
+      this.createHotSpot()
       this.$emit('change', krpano)
     }
   },

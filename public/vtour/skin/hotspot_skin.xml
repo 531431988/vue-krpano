@@ -1,15 +1,15 @@
 <krpano>
   <!-- 热点样式  -->
   <style
-    name="hotspot_skin_to"
-    url="../hotspot/imsges/new_spotd1_gif.png"
+    name="hotspot_skin_look"
+    url="%VIEWER%/hotspot/imsges/new_spotd7_gif.png"
     crop="0|0|128|128"
     frames="20" framewidth="128" frameheight="128" frame="0"
     onloaded="hotspot_animate();add_tooltip()"
   />
   <style
-    name="hotspot_skin_look"
-    url="../hotspot/imsges/spotd4_gif.png"
+    name="hotspot_skin_pointer"
+    url="%VIEWER%/hotspot/imsges/new_spotd8_gif.png"
     crop="0|0|128|128"
     frames="20" framewidth="128" frameheight="128" frame="0"
     onloaded="hotspot_animate();add_tooltip()"
