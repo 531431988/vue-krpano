@@ -1,79 +1,108 @@
 <template>
   <div id="app">
-    <Krpano @init="onInitKrpano" @change="onSceneChanged" ref="krpano" :xml="xml" :scene="scene" />
-    <Nav ref="nav" />
-    <Sidebar :krpano="krpano" />
+    <a-tree-select
+      v-model="value"
+      style="position:absolute;z-index: 1;width: 200px"
+      :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
+      :tree-data="treeData"
+      placeholder="选择站点"
+      tree-default-expand-all
+      @select="onSelect"
+    >
+      <span
+        v-if="key === '0-0-1'"
+        slot="title"
+        slot-scope="{ key, value }"
+        style="color: #08c"
+      >
+        中驿馆
+      </span>
+    </a-tree-select>
+    <Krpano
+      @init="onInitKrpano"
+      @change="onSceneChanged"
+      ref="krpano"
+      :xml="xml"
+    />
   </div>
 </template>
 
 <script>
 import { Krpano } from '@/components'
-import { Sidebar, Nav } from './components'
-import config from '@/config'
-import hotspot from '@/mixins/hotspot'
-import { ImagePreview } from 'vant'
+// import './vtour/hotspot/json/zyg.json'
 export default {
   components: {
-    Krpano,
-    Sidebar,
-    Nav
+    Krpano
   },
-  mixins: [hotspot],
   data () {
     return {
-      xml: './krpano/scene/balcony.xml',
-      scene: 'balcony',
-      krpano: null,
-      active: 0
-    }
-  },
-  provide () {
-    return {
-      getContext: () => ({
-        active: this.active
-      })
+      value: undefined,
+      treeData: [
+        {
+          title: '黄冈市',
+          value: '0-0',
+          key: '0-0',
+          children: [
+            {
+              value: '0-0-1',
+              key: '0-0-1',
+              scene: 'zyg',
+              scopedSlots: {
+                title: 'title'
+              }
+            },
+            {
+              title: '黄梅馆',
+              value: '0-0-2',
+              key: '0-0-2',
+              scene: 'hmg'
+            }
+          ]
+        },
+        {
+          title: '黄石市',
+          value: '0-1',
+          key: '0-1'
+        }
+      ],
+      xml: '../vtour/scene/zyg.xml',
+      krpano: null
     }
   },
   methods: {
-    // 场景切换成功
-    onSceneChanged (krpano, name) {
-      // 生成查看热点
-      this.active = Object.keys(config.hotspot).findIndex(item => item === name)
+    onSelect (value, node) {
+      this.xml = `../scene/${node.dataRef.scene}.xml`
       this.createHotSpot()
     },
     onInitKrpano (krpano) {
       this.krpano = krpano
-      setTimeout(() => {
-        // 生成跳转热点
-        this.createHotSpot()
-        // 自动播放
-        // this.krpano.call('bgsnd_start')
-      }, 400)
+      this.createHotSpot()
     },
-    // 生成热点和查看按钮
+    // 场景切换成功
+    onSceneChanged (krpano) {
+      console.log('场景切换成功')
+      this.createHotSpot()
+    },
     createHotSpot () {
-      const { to, look = null } = config.hotspot[this.scene]
-      to.forEach(item => {
-        this.addhotspot(item, (current, next) => {
-          this.scene = item.name
-        })
-      })
-      look && look.forEach(item => {
-        this.addhotspot(item, (current, next) => {
-          ImagePreview([
-            'https://img.yzcdn.cn/1.jpg',
-            'https://img.yzcdn.cn/2.jpg'
-          ])
-        })
-      })
+      const name = 'demo'
+      const { krpano } = this
+      setTimeout(() => {
+        if (krpano.get('device.html5')) {
+          krpano.call(`addhotspot(${name})`)
+          krpano.call(`hotspot[${name}].loadstyle(hotspot_skin_look)`)
+          krpano.set(`hotspot[${name}].ath`, 171.925)
+          krpano.set(`hotspot[${name}].atv`, 7.188)
+          krpano.set(`hotspot[${name}].scale`, 0.5)
+          krpano.set(`hotspot[${name}].tooltip`, '测试')
+          krpano.set(`hotspot[${name}].onclick`, function (params) {
+            console.log(krpano.get('xml.scene'), params)
+            console.log(krpano.get('hotspot'))
+          }.bind(null, name))
+        }
+      }, 500)
     }
   },
   mounted () {
-    this.$bus.$on('on-pano-list-click', (item, index) => {
-      this.active = index
-      this.scene = item.scene
-      this.$refs.nav.showBar = true
-    })
   }
 
 }

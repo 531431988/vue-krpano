@@ -1,0 +1,86 @@
+<krpano>
+
+	<!--
+		webvr_autozoom.xml
+		krpano 1.20
+
+		A helper script for zooming in VR.
+
+		After ~2 seconds staring at one point, the view start zooming,
+		it stops and slowly zooms-out back again when looking around.
+	-->
+
+	<events name="webvr_autozoom" keep="true"
+	        onnewpano="webvr_autozoom_calc_maxzoom();"
+	        webvr_onentervr="webvr_autozoom_start();"
+	        webvr_onexitvr="webvr_autozoom_stop();"
+	        />
+
+
+	<!-- some settings -->
+	<action name="webvr_autozoom_init" scope="private:webvr_autozoom" autorun="onstart">
+		set(zoom_delay, 2.0);
+		set(movement_tolerance, 0.01);
+		set(zoom_speed, 1.0);
+		set(max_zoom, 10);
+	</action>
+
+
+	<!-- calc maxzoom depending onthe current pano image -->
+	<action name="webvr_autozoom_calc_maxzoom" scope="private:webvr_autozoom">
+		set(maxwidth, get(global.image.hres));
+		if(tolower(global.image.type) == 'cube',
+			calc(maxwidth, maxwidth * Math.PI);
+		  ,tolower(global.image.type) == 'flat',
+			calc(maxwidth, maxwidth * 360 / 90);
+		  ,
+			calc(maxwidth, maxwidth * 360 / global.image.hfov);
+		);
+		calc(max_zoom, maxwidth / 4000);
+	</action>
+
+
+	<action name="webvr_autozoom_stop" scope="private:webvr_autozoom">
+		clearinterval(webvr_autozoom);
+	</action>
+
+
+	<action name="webvr_autozoom_start" scope="private:webvr_autozoom">
+		copy(last_tick, global.timertick);
+		copy(last_movement_tick, last_tick);
+		copy(last_view_hlookat, global.view.hlookat);
+		copy(last_view_vlookat, global.view.vlookat);
+
+		setinterval(webvr_autozoom, 0.1,
+			copy(cur_tick, global.timertick);
+			if(global.webvr.isenabled,
+				getlooktodistance(move_distance, last_view_hlookat, last_view_vlookat);
+				calc(movespeed, move_distance / (cur_tick-last_tick));
+
+				calc(movement_tolerance, 0.01 / (global.webvr.zoom^0.5));
+				if(movespeed GT movement_tolerance,
+					copy(last_movement_tick, cur_tick);
+					tween(zoom_speed, 1.0, 0);
+					Math.pow(movespeed, 0.5);
+				);
+
+				if((cur_tick - last_movement_tick) GT (zoom_delay*1000),
+					tween(zoom_speed, 1.04);
+				);
+
+				calc(new_zoom, global.webvr.zoom * (zoom_speed * (1.0 - movespeed)) );
+				clamp(new_zoom, 1, get(max_zoom));
+				tween(global.webvr.zoom, get(new_zoom), 0.1, linear);
+
+				calc(global.webvr.friction, new_zoom GT 2.0 ? (new_zoom - 2.0) / 100.0 : 0);
+			  ,
+				copy(last_movement_tick, cur_tick);
+			);
+			copy(last_tick, cur_tick);
+			copy(last_view_hlookat, global.view.hlookat);
+			copy(last_view_vlookat, global.view.vlookat);
+		);
+	</action>
+
+</krpano>
+

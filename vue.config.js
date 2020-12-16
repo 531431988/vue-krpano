@@ -8,7 +8,7 @@ module.exports = {
   chainWebpack: config => {
     // 来将 svg 图标作为 Vue 组件导入
     const svgRule = config.module.rule('svg')
-    svgRule.uses.clear();
+    svgRule.uses.clear()
     svgRule
       .use('vue-svg-loader')
       .loader('vue-svg-loader')
@@ -22,7 +22,7 @@ module.exports = {
     //   )
     // 添加别名
     config.resolve.alias
-      //内部为正则表达式  vue结尾的
+      // 内部为正则表达式  vue结尾的
       .set('vue$', 'vue/dist/vue.esm.js')
       .set('@', resolve('src'))
 
@@ -46,21 +46,6 @@ module.exports = {
           limit: 10000
         }
       })
-    // 压缩图片
-    if (env) {
-      config.module
-        .rule('images')
-        .use('image-webpack-loader')
-        .loader('image-webpack-loader')
-        .options({
-          mozjpeg: { progressive: true, quality: 65 },
-          optipng: { enabled: false },
-          pngquant: { quality: [0.65, 0.9], speed: 4 },
-          gifsicle: { interlaced: false }
-          // webp: { quality: 75 }
-        })
-      return config
-    }
   },
   configureWebpack: config => {
     config.resolve.extensions = ['.vue', '.js', '.jsx', '.json', '.less', '.css', '.scss', '.jpg', '.png', '.svg']
@@ -108,10 +93,6 @@ module.exports = {
   },
   // LESS全局变量
   pluginOptions: {
-    'style-resources-loader': {
-      preProcessor: 'less',
-      patterns: [resolve('./src/less/theme.less')]
-    },
   },
   publicPath: process.env.VUE_APP_PUBLIC_PATH,
   productionSourceMap: false

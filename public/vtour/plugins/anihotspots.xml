@@ -1,0 +1,89 @@
+<krpano>
+
+	<!-- 动态热点动画 -->
+	<action name="do_crop_animation" scope="local" args="framewidth, frameheight, framerate">
+		<!-- 定义局部变量 -->
+		calc(local.xframes, (caller.imagewidth /framewidth) BOR 0);
+		calc(local.frames, xframes * ((caller.imageheight / frameheight) BOR 0));
+		def(local.frame, integer, 0);
+		
+		<!-- 设置第一帧 -->
+		calc(caller.crop, '0|0|' + framewidth + '|' + frameheight);
+		
+		<!-- 动画部分 -->
+		setinterval(calc('crop_anim_' + caller.name), calc(1.0 / framerate),
+			if(caller.loaded,
+				inc(frame);
+				if(frame GE frames, if(caller.onlastframe !== null, callwith(caller, onlastframe() ) ); set(frame,0); );
+				mod(xpos, frame, xframes);
+				div(ypos, frame, xframes);
+				Math.floor(ypos);
+				mul(xpos, framewidth);
+				mul(ypos, frameheight);
+				calc(caller.crop, xpos + '|' + ypos + '|' + framewidth + '|' + frameheight);
+				,
+				<!-- 当热点移除时停止动画 -->
+				clearinterval(calc('crop_anim_' + caller.name));
+			);
+		);
+	</action>
+
+  <action name="add_all_the_time_tooltip_for_VR">
+		txtadd(tooltipname, 'vrtooltip_', get(name));
+		addhotspot(get(tooltipname)); 
+		set(hotspot[get(tooltipname)].type,text);
+		copy(hotspot[get(tooltipname)].edge,hotspot[get(name)].edge);
+		copy(hotspot[get(tooltipname)].distorted,hotspot[get(name)].distorted);
+		copy(hotspot[get(tooltipname)].ath,hotspot[get(name)].ath);
+		copy(hotspot[get(tooltipname)].atv,hotspot[get(name)].atv);
+		set(hotspot[get(tooltipname)].oy,-20);
+		set(hotspot[get(tooltipname)].ox,0);
+		set(hotspot[get(tooltipname)].vcenter,true);
+		set(hotspot[get(tooltipname)].padding,5);
+		set(hotspot[get(tooltipname)].mipmapping,true);
+		set(hotspot[get(tooltipname)].oversampling,2);
+		set(hotspot[get(tooltipname)].bg,true);
+		set(hotspot[get(tooltipname)].bgcolor,0x000000);
+		set(hotspot[get(tooltipname)].bgroundedge,5);
+		set(hotspot[get(tooltipname)].bgalpha,0.5);
+		set(hotspot[get(tooltipname)].bgborder,0);
+		set(hotspot[get(tooltipname)].bgshadow,'0 0 0 0x000000 0');
+		set(hotspot[get(tooltipname)].css,'text-align:left; color:#FFFFFF; font-family:MicrosoftYahei; font-size:14px;');
+		if(device.mobile,
+			set(hotspot[get(tooltipname)].css,'text-align:center; color:#FFFFFF; 	font-family:MicrosoftYahei; font-weight:bold; font-size:14px;');
+		);
+		set(hotspot[get(tooltipname)].txtshadow,'0 0 0 0x000000 0');
+	
+		if(text == '' OR text === null,
+			copy(hotspot[get(tooltipname)].html,scene[get(linkedscene)].title),
+			copy(hotspot[get(tooltipname)].html,text);
+		); 
+	
+		set(hotspot[get(tooltipname)].enabled,false); 
+	
+		if(lp_running == false,
+			set(hotspot[get(tooltipname)].visible,true); 
+			, 	
+			if(!webvr.isenabled,
+				if(lp_running == true,
+				set(hotspot[get(tooltipname)].visible,false); 
+				set(hotspot[get(tooltipname)].mark2,true);
+				);
+				);
+			);
+	
+		if(hotspot[get(name)].normal == false, 
+	
+			set(hotspot[get(tooltipname)].normal,false);
+			set(hotspot[get(tooltipname)].onloaded,
+				if(webvr.isenabled,
+					set(visible,false);
+					,	
+					if(lp_running == false OR lp_running == null OR lp_running === null,  
+						set(visible,true);
+						);
+					);
+					);
+			);
+	</action>
+</krpano>

@@ -1,0 +1,102 @@
+﻿<krpano>
+	
+	<!--
+		contextmenu.xml
+		krpano 1.20.9
+		
+		A helper script for changing the mouse-control-mode and the 
+		viewing projections via the context-menu.
+	-->
+	
+	<contextmenu fullscreen="true" versioninfo="false" enterfs="全屏" exitfs="退出全屏" >
+		<item name="kr" caption="光谷信息" onclick="openurl('http://www.51bsi.com/')"  />
+		<!-- <item name="cc" caption="改变模式" onclick="cm_changecontrolmode();"  separator="above" /> -->
+		<item name="nv" caption="正常视图"        onclick="cm_normal_view();"        showif="view.vlookatrange == 180" separator="above"      />
+		<item name="fv" caption="鱼眼视图"       onclick="cm_fisheye_view();"       showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<item name="sv" caption="立体视图" onclick="cm_stereographic_view();" showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<item name="av" caption="建筑视图" onclick="cm_architectural_view();" showif="view.vlookatrange == 180"                       />
+		<item name="pv" caption="景观视图"       onclick="cm_pannini_view();"       showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<item name="lp" caption="星球视图" onclick="cm_littleplanet_view();"  showif="view.vlookatrange == 180" devices="flash|webgl" />
+	</contextmenu>
+
+
+	<!-- <action name="cm_changecontrolmode">
+		if(device.html5,
+			switch(control.mode, moveto, drag, follow);
+			cm_changecontrolmode_updatecaption();
+		  ,
+			switch(control.mode, moveto, drag);
+		);
+	</action>
+		
+	<action name="cm_changecontrolmode_updatecaption" autorun="onstart" devices="html5">
+		txtadd(contextmenu.item[cc].caption,
+			"Controlmode: ",
+			"[span style=[sq]", calc(control.mode == 'drag' ? "text-decoration:underline" :""), "[sq]]",
+			"Drag",
+			"[/span]",
+			" | ",
+			"[span style=[sq]", calc(control.mode == 'follow' ? "text-decoration:underline" :""), "[sq]]",
+			"Follow",
+			"[/span]",
+			" | ",
+			"[span style=[sq]", calc(control.mode == 'moveto' ? "text-decoration:underline" :""), "[sq]]",
+			"MoveTo",
+			"[/span]",
+			);
+	</action> -->
+
+	<action name="cm_look_straight">
+		if(view.vlookat LT -80 OR view.vlookat GT +80,
+			tween(view.vlookat, 0.0, 1.0, easeInOutSine);
+			tween(view.fov,     100, distance(150,0.8));
+		  );
+	</action>
+
+	<action name="cm_normal_view">
+		cm_look_straight();
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       0.0, distance(1.0,0.5));
+	</action>
+
+	<action name="cm_architectural_view">
+		cm_look_straight();
+		tween(view.architectural, 1.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       0.0, distance(1.0,0.5));
+	</action>
+
+	<action name="cm_fisheye_view">
+		cm_look_straight();
+		tween(view.architectural, 0.0,  distance(1.0,0.5));
+		tween(view.pannini,       0.0,  distance(1.0,0.5));
+		tween(view.fisheye,       0.35, distance(1.0,0.5));
+	</action>
+
+	<action name="cm_stereographic_view">
+		cm_look_straight();
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       1.0, distance(1.0,0.8));
+	</action>
+
+	<action name="cm_pannini_view">
+		cm_look_straight();
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       1.0, distance(1.0,0.8));
+		if(view.fisheye LT 0.1,
+			tween(view.fisheye, 1.0, distance(1.0,0.8));
+		  );
+	</action>
+
+	<action name="cm_littleplanet_view">
+		tween(view.architectural, 0.0, distance(1.0,0.5));
+		tween(view.pannini,       0.0, distance(1.0,0.5));
+		tween(view.fisheye,       1.0, distance(1.0,0.8));
+		tween(view.fov,           150, distance(150,0.8));
+		tween(view.vlookat,        90, distance(100,0.8));
+		tween(view.hlookat, calc(view.hlookat + 123.0), distance(100,0.8));
+	</action>
+
+</krpano>

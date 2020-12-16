@@ -1,0 +1,138 @@
+<krpano>
+
+
+	<!-- 代码复制 开始位置 -->
+ 
+	<!-- 地图部分 url对应的是地图本身的路径，按照自己的文件修改url中数值 -->
+	<layer name="map" url="../skin/zgy.png" keep="true" handcursor="false" capture="false"
+	       align="righttop" ox="-10" oy="40"
+	       scale="0.25" scalechildren="true"
+	       onclick="openmap();"
+	       >
+
+		<!-- 雷达 (也覆盖在地图点上, 但在激活点图像后面) -->
+		<layer name="radar" 
+		       url.flash="%SWFPATH%/plugins/radar.swf"
+		       url.html5="%SWFPATH%/plugins/radar.js"
+		       align="lefttop" edge="center" zorder="1"
+		       scale.mobile="1.5"
+		       fillalpha="0.5" fillcolor="0x7F5F3F"
+		       linewidth="1.0" linecolor="0xE0E0A0" linealpha="0.5"
+		       />
+ 
+       	<!-- 地图点图像部分 url可以设置 用style来统一处理 所有layer都载入了一个名为mapspot的style，注意这里spot是由0开始，而不是由1开始的，因此在一般情况下，地图点与场景一一对应，而场景的index是从0开始的，所以我们可以利用这一点提高代码的可读性 -->
+	
+		<layer name="spot0" style="mapspot" x="182" y="312" zorder="1" text="北边正门" onclick="mapspot_loadscene();" />
+		<layer name="spot6" style="mapspot" x="232" y="422" zorder="1" text="北边 餐厅" onclick="mapspot_loadscene();" />
+		<layer name="spot7" style="mapspot" x="682" y="176" zorder="1" text="洗手间" onclick="mapspot_loadscene();" />  
+		<layer name="spot5" style="mapspot" x="582" y="380" zorder="1" text="北边大厅" onclick="mapspot_loadscene();" />
+
+		<!-- 激活点图像 (覆盖在普通的地图点上) -->
+		<layer name="activespot" url="../skin/loc_cur.png" 
+		       align="lefttop" edge="center" zorder="2" scale.mobile="2"
+		       />
+ 
+	</layer>
+ 
+	<style name="mapspot"  url="../skin/loc.png"  align="lefttop" edge="center" scale.mobile="2" />
+ 
+	<!-- 地图打开部分 - 缩放到100% (如果屏幕小的话则可能更小) -->
+	<action name="openmap">
+		set(layer[map].onclick, closemap(); );
+		layer[map].changeorigin(center,center);
+ 
+		set(bigscale,1);
+		if(layer[map].imagewidth GT stagewidth, div(bigscale, stagewidth, layer[map].imagewidth); );
+ 
+		tween(layer[map].x, 0);
+		tween(layer[map].y, 0);
+		tween(layer[map].scale, get(bigscale));
+	</action>
+ 
+	<!-- 地图关闭部分 - 缩放到自身尺寸的四分之一 -->
+	<action name="closemap">
+		set(layer[map].onclick, openmap(); );
+		layer[map].changeorigin(righttop,righttop);
+ 
+		tween(layer[map].x, 0);
+		tween(layer[map].y, 0);
+		tween(layer[map].scale, 0.25);
+	</action>
+ 
+ 	<!-- 隐藏地图 -->
+ 	<action name="hidemap">
+		set(layer[map].onclick, openmap(); );
+		layer[map].changeorigin(righttop,righttop);
+ 
+		tween(layer[map].x, 0);
+		tween(layer[map].y, 0);
+		tween(layer[map].scale, 0);
+		
+	</action>
+ 
+	<!-- 当点击地图点时执行的动作 -->
+	<action name="mapspot_loadscene">
+		subtxt(spotid,get(name),4,2);
+ 
+		if(layer[map].scale GT 0.25,
+			<!-- 当地图放大时需要执行更多特殊的动作，缩小地图等 -->
+			set(layer[map].enabled, false);
+			tween(layer[map].alpha, 0.0, 0.25, default,
+			
+			if(spotid != scene[get(xml.scene)].index,  
+			  loadscene(get(scene[get(spotid)].name),null,MERGE,BLEND(1)); 
+			  );
+
+
+				set(layer[map].onclick, openmap(); );
+				layer[map].changeorigin(righttop,righttop);
+ 
+				set(layer[map].x, 0);
+				set(layer[map].y, 0);
+				set(layer[map].scale, 0.25);
+ 
+				set(events[sceneload].onloadcomplete,
+					delayedcall(1,
+						tween(layer[map].alpha, 1.0, 0.25, default, set(layer[map].enabled, true); );
+					  );
+				  );
+			  );
+		  ,
+			<!-- 小地图时只需要载入场景 -->
+			if(spotid != scene[get(xml.scene)].index,  
+			  loadscene(get(scene[get(spotid)].name),null,MERGE,BLEND(1)); 
+			  );
+				
+		  );
+	</action>
+ 
+ 
+ 
+	<!-- 指定激活点和雷达点的父元素 设定雷达点的heading，这个在每个scene加载时都要执行一次-->
+	<action name="updateradar">  
+	    <!-- 因此绿色地图点会在每次激活时替换蓝色普通地图点，因此每次激活之前，首先保证所有蓝色地图点是可见的，如果没有下面这个代码，则会使得上一个场景的蓝色地图点消失，这里用的是一个循环语句-->  
+	    for(set(i,0),i LT scene.count,inc(i),  
+	    txtadd(spotname,'spot',get(i));  
+	    set(layer[get(spotname)].visible, true);  
+	    );
+
+	    <!-- 将当前热点的坐标复制到雷达和激活点的坐标，直接利用当前场景的index，反过来得到layer的名字，这样就使得这个activetespot的参数只要一个就可以了-->  
+	    txtadd(spotidnow,'spot',get(scene[get(xml.scene)].index));  
+	    copy(layer[radar].x, layer[get(spotidnow)].x);  
+	    copy(layer[radar].y, layer[get(spotidnow)].y);  
+	    copy(layer[activespot].x, layer[get(spotidnow)].x);  
+	    copy(layer[activespot].y, layer[get(spotidnow)].y);  
+
+			trace('x=', layer['activespot'].x)
+	  
+	    <!-- 将第二个参数赋值到雷达的heading -->  
+	    set(layer[radar].heading, %1);  
+	  
+	        <!-- 显示雷达和绿色激活热点，以及隐藏当前场景的地图点 -->  
+	    set(layer[radar].visible, true);  
+	    set(layer[activespot].visible, true);  
+	    set(layer[get(spotidnow)].visible, false);  
+	</action>
+ 
+	<!-- 代码复制结束部分 -->
+</krpano>

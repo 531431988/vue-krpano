@@ -1,0 +1,24 @@
+<krpano>
+	<autorotate enabled="true" waittime="5" accel="3" speed="3.0" horizon="0.0" tofov="100.0" />
+	<events name="autorun" keep="true" onloadcomplete="bombtimer(0);" onmousedown="set(bt,0);" />
+	<action name="bombtimer">
+		if(autorotate.enabled,
+      set(bt,%1);
+      add(bt,1);
+      copy(bt_1,autorotate.speed);
+      div(bt_2,360,bt_1);
+      add(bt_2,autorotate.waittime);
+      if(bt GE bt_2,
+      stopdelayedcall(bomb);set(bt,0);nextscene();,
+      delayedcall(bomb,1,bombtimer(get(bt)); );
+		);
+		);
+	</action>
+	<action name="nextscene">
+		set(ns, get(scene[get(xml.scene)].index));
+		set(maxs, get(scene.count));
+		add(ns,1);
+		if(ns == maxs, set(ns,0));
+		loadscene(get(scene[get(ns)].name), null, MERGE, BLEND(1));
+	</action>
+</krpano>

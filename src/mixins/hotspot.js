@@ -2,6 +2,7 @@ export default {
   // 动态添加 hotspot
   methods: {
     addhotspot ({ name, ath, atv, title }, callback) {
+      console.log(ath)
       const { krpano } = this
       name += `hs${((Date.now() + Math.random()) | 0)}`
       krpano.call(`addhotspot(${name})`)
