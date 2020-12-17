@@ -272,7 +272,7 @@
 	</scene>
 
   <!-- 雷达图 -->
-  <layer name="map" url="%SWFPATH%/skin/zgy.png" keep="true" handcursor="false" capture="false" bgshadow="0 0 0 16 0x000000 0.3" align="righttop" ox="-16" oy="16" scale="0.25" scalechildren="true" onclick="openmap();">
+  <layer name="map" url="%SWFPATH%/panos/radar/zgy.png" keep="true" handcursor="false" capture="false" bgshadow="0 0 0 16 0x000000 0.3" align="righttop" ox="-16" oy="16" scale="0.25" scalechildren="true" onclick="openmap();">
   <!-- 雷达 (也覆盖在地图点上, 但在激活点图像后面) -->
     <layer name="radar" 
     url.flash="%SWFPATH%/plugins/radar.swf"

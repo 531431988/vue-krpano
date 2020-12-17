@@ -11,4 +11,22 @@
 			<cube url="%SWFPATH%/panos/hmg/01.tiles/pano_%s.jpg" />
 		</image>
 	</scene>
+
+  
+  <!-- 雷达图 -->
+  <layer name="map" url="%SWFPATH%/panos/radar/hmg.png" keep="true" handcursor="false" capture="false" bgshadow="0 0 0 16 0x000000 0.3" align="righttop" ox="-16" oy="16" scale="0.25" scalechildren="true" onclick="openmap();">
+  <!-- 雷达 (也覆盖在地图点上, 但在激活点图像后面) -->
+    <layer name="radar" 
+    url.flash="%SWFPATH%/plugins/radar.swf"
+    url.html5="%SWFPATH%/plugins/radar.js"
+    align="lefttop" edge="center" zorder="1"
+    scale.mobile="1.5"
+    fillalpha="0.5" fillcolor="0x7F5F3F"
+    linewidth="1.0" linecolor="0xE0E0A0" linealpha="0.5"
+    />
+  
+    <!-- 激活点图像 (覆盖在普通的地图点上) -->
+    <layer name="activespot" url="%SWFPATH%/skin/loc_cur.png" align="lefttop" edge="center" zorder="2" scale.mobile="2" />
+    
+	</layer>
 </krpano>
