@@ -90,7 +90,6 @@
 		<hotspot name="spot3" style="skin_hotspotstyle" ath="134.341" atv="6.421" linkedscene="scene_07" text="北边 餐厅" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 		<hotspot name="spot4" style="skin_hotspotstyle" ath="-42.609" atv="6.026" linkedscene="scene_09" text="北边 购物中心" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 		<hotspot name="spot5" style="skin_hotspotstyle" ath="171.030" atv="46.277" linkedscene="scene_08" text="北边 洗手间" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
-		<hotspot name="spot12" style="skin_hotspotstyle" ath="-159.001" atv="-6.755" linkedscene="scene_07" text="绝味鸭脖" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd8_gif.png" onclick="merchantClick()" />
 	</scene>
 
 	<scene name="scene_07" title="北边 餐厅" onstart="updateradar(-100)" thumburl="%SWFPATH%/panos/zyg/07.tiles/thumb.jpg" lat="" lng="" heading="">

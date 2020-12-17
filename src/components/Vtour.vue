@@ -73,8 +73,8 @@ export default {
         const { krpano } = this
         const _this = this
         this.scene = krpano.get('xml.scene')
-        const { look } = require(`../../public/vtour/hotspot/json/${this.$attrs.name}.json`)[this.scene] || []
-        look && look.forEach(({ id, name = '', ath, atv, text, icon = '', type = '' }) => {
+        const dots = require(`../../public/vtour/hotspot/json/${this.$attrs.name}.json`)[this.scene] || []
+        dots && dots.forEach(({ id, name = '', ath, atv, text, icon = '', type = '' }) => {
           name += `hs${((Date.now() + Math.random()) | 0)}`
           krpano.call(`addhotspot(${name})`)
           if (icon === 'pointer') {
