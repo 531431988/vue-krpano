@@ -1,14 +1,14 @@
 ﻿<krpano version="1.19" title="黄梅服务区" logkey="true" showerrors="true" debugmode="false">
 
   <include url="./common.xml" />
-	<scene name="scene_01" title="航拍" onstart="updateradar(-100)" thumburl="../panos/hmg/01.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_01" title="航拍" onstart="updateradar(-100)" thumburl="%SWFPATH%/panos/hmg/01.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="185.430" vlookat="5.878" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/hmg/01.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/hmg/01.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/hmg/01.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/hmg/01.tiles/pano_%s.jpg" />
 		</image>
 	</scene>
 </krpano>

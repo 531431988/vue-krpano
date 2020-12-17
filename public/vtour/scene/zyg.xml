@@ -1,18 +1,18 @@
 ﻿<krpano version="1.19" title="中馆驿服务区" logkey="true" showerrors="true" debugmode="false">
 
-  <include url="./common.xml" />
+  <include url="%SWFPATH%/scene/common.xml" />
 
 	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
 	
 	
-	<scene name="scene_01" title="中馆驿服务区航拍" onstart="updateradar(-100)" thumburl="../panos/zyg/01.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_01" title="中馆驿服务区航拍" onstart="updateradar(-100)" thumburl="%SWFPATH%/panos/zyg/01.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="185.430" vlookat="5.878" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/01.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/01.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/01.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/01.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot4" style="skin_hotspotstyle" ath="-4.970" atv="10.852" linkedscene="scene_11" text="南边 正门" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" />
 
@@ -22,14 +22,14 @@
 
 	</scene>
 
-	<scene name="scene_02" title="北边 正门" onstart="updateradar(-100)" thumburl="../panos/zyg/02.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_02" title="北边 正门" onstart="updateradar(-100)" thumburl="%SWFPATH%/panos/zyg/02.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/02.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/02.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/02.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/02.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot4" style="skin_hotspotstyle" ath="5.289" atv="2.983" linkedscene="scene_06" text="北边 大厅" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 		<hotspot name="spot5" style="skin_hotspotstyle" ath="81.117" atv="-1.754" linkedscene="scene_05" text="北边 修理厂" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
@@ -38,53 +38,53 @@
 
 	</scene>
 
-	<scene name="scene_03" title="北边 充电站" onstart="" thumburl="../panos/zyg/03.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_03" title="北边 充电站" onstart="" thumburl="%SWFPATH%/panos/zyg/03.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/03.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/03.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/03.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/03.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="-155.561" atv="1.488" linkedscene="scene_02" text="北边 正门" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_04" title="北边 加油站" onstart="" thumburl="../panos/zyg/04.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_04" title="北边 加油站" onstart="" thumburl="%SWFPATH%/panos/zyg/04.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/04.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/04.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/04.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/04.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="86.583" atv="4.713" linkedscene="scene_02" text="北边 正门" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_05" title="北边 修理厂" onstart="" thumburl="../panos/zyg/05.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_05" title="北边 修理厂" onstart="" thumburl="%SWFPATH%/panos/zyg/05.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/05.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/05.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/05.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/05.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="-125.860" atv="5.422" linkedscene="scene_02" text="北边 正门" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_06" title="北边 大厅" onstart="updateradar(-100)" thumburl="../panos/zyg/06.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_06" title="北边 大厅" onstart="updateradar(-100)" thumburl="%SWFPATH%/panos/zyg/06.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="210.753" vlookat="17.508" fovtype="MFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/06.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/06.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/06.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/06.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="76.146" atv="15.074" linkedscene="scene_02" text="北边 正门" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 		<hotspot name="spot3" style="skin_hotspotstyle" ath="134.341" atv="6.421" linkedscene="scene_07" text="北边 餐厅" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
@@ -93,40 +93,40 @@
 		<hotspot name="spot12" style="skin_hotspotstyle" ath="-159.001" atv="-6.755" linkedscene="scene_07" text="绝味鸭脖" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd8_gif.png" onclick="merchantClick()" />
 	</scene>
 
-	<scene name="scene_07" title="北边 餐厅" onstart="updateradar(-100)" thumburl="../panos/zyg/07.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_07" title="北边 餐厅" onstart="updateradar(-100)" thumburl="%SWFPATH%/panos/zyg/07.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/07.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/07.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/07.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/07.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="-18.550" atv="8.061" linkedscene="scene_08" text="北边 洗手间" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_08" title="北边 洗手间" onstart="updateradar(-100)" thumburl="../panos/zyg/08.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_08" title="北边 洗手间" onstart="updateradar(-100)" thumburl="%SWFPATH%/panos/zyg/08.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/08.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/08.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/08.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/08.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="-112.446" atv="12.625" linkedscene="scene_09" text="北边 购物中心" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_09" title="北边 购物中心" onstart="" thumburl="../panos/zyg/09.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_09" title="北边 购物中心" onstart="" thumburl="%SWFPATH%/panos/zyg/09.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="183.704" vlookat="1.716" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/09.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/09.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/09.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/09.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="104.521" atv="14.034" linkedscene="scene_08" text="北边 洗手间" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 		<hotspot name="spot3" style="skin_hotspotstyle" ath="-133.828" atv="11.228" linkedscene="scene_10" text="北边 游乐区" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
@@ -134,27 +134,27 @@
 
 	</scene>
 
-	<scene name="scene_10" title="北边 游乐区" onstart="" thumburl="../panos/zyg/10.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_10" title="北边 游乐区" onstart="" thumburl="%SWFPATH%/panos/zyg/10.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="132.203" vlookat="17.544" fovtype="MFOV" fov="100.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/10.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/10.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/10.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/10.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="132.726" atv="7.125" linkedscene="scene_06" text="北边 大厅" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_11" title="南边 正门" onstart="" thumburl="../panos/zyg/11.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_11" title="南边 正门" onstart="" thumburl="%SWFPATH%/panos/zyg/11.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/11.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/11.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/11.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/11.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot4" style="skin_hotspotstyle" ath="1.416" atv="6.577" linkedscene="scene_15" text="南边 大厅" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 		<hotspot name="spot5" style="skin_hotspotstyle" ath="73.789" atv="-0.614" linkedscene="scene_14" text="南边 修理厂" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
@@ -163,53 +163,53 @@
 
 	</scene>
 
-	<scene name="scene_12" title="南边 充电站" onstart="" thumburl="../panos/zyg/12.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_12" title="南边 充电站" onstart="" thumburl="%SWFPATH%/panos/zyg/12.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/12.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/12.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/12.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/12.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="-121.927" atv="3.612" linkedscene="scene_11" text="南边 正门" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_13" title="南边 加油站" onstart="" thumburl="../panos/zyg/13.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_13" title="南边 加油站" onstart="" thumburl="%SWFPATH%/panos/zyg/13.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/13.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/13.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/13.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/13.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="111.586" atv="2.006" linkedscene="scene_11" text="南边 正门" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_14" title="南边 修理厂" onstart="" thumburl="../panos/zyg/14.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_14" title="南边 修理厂" onstart="" thumburl="%SWFPATH%/panos/zyg/14.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/14.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/14.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/14.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/14.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="-82.640" atv="5.564" linkedscene="scene_11" text="南边 正门" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_15" title="南边 大厅" onstart="" thumburl="../panos/zyg/15.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_15" title="南边 大厅" onstart="" thumburl="%SWFPATH%/panos/zyg/15.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="146.882" vlookat="12.388" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/15.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/15.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/15.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/15.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="11.762" atv="11.275" linkedscene="scene_11" text="南边 正门" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 		<hotspot name="spot3" style="skin_hotspotstyle" ath="74.258" atv="7.239" linkedscene="scene_16" text="南边 餐厅" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
@@ -218,85 +218,81 @@
 
 	</scene>
 
-	<scene name="scene_16" title="南边 餐厅" onstart="" thumburl="../panos/zyg/16.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_16" title="南边 餐厅" onstart="" thumburl="%SWFPATH%/panos/zyg/16.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/16.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/16.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/16.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/16.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="-24.273" atv="10.865" linkedscene="scene_17" text="南边 洗手间" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_17" title="南边 洗手间" onstart="" thumburl="../panos/zyg/17.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_17" title="南边 洗手间" onstart="" thumburl="%SWFPATH%/panos/zyg/17.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/17.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/17.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/17.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/17.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="65.506" atv="15.595" linkedscene="scene_18" text="南边 购物中心" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_18" title="南边 购物中心" onstart="" thumburl="../panos/zyg/18.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_18" title="南边 购物中心" onstart="" thumburl="%SWFPATH%/panos/zyg/18.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="175.499" vlookat="14.143" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/18.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/18.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/18.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/18.tiles/pano_%s.jpg" />
 		</image>
 		<hotspot name="spot2" style="skin_hotspotstyle" ath="41.335" atv="5.048" linkedscene="scene_16" text="南边 餐厅" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 		<hotspot name="spot3" style="skin_hotspotstyle" ath="-138.217" atv="4.970" linkedscene="scene_19" text="南边 游乐区" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-	<scene name="scene_19" title="南边 游乐区" onstart="" thumburl="../panos/zyg/19.tiles/thumb.jpg" lat="" lng="" heading="">
+	<scene name="scene_19" title="南边 游乐区" onstart="" thumburl="%SWFPATH%/panos/zyg/19.tiles/thumb.jpg" lat="" lng="" heading="">
 
 		<view hlookat="147.300" vlookat="2.128" fovtype="MFOV" fov="120.000" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
 
-		<preview url="../panos/zyg/19.tiles/preview.jpg" />
+		<preview url="%SWFPATH%/panos/zyg/19.tiles/preview.jpg" />
 
 		<image>
-			<cube url="../panos/zyg/19.tiles/pano_%s.jpg" />
+			<cube url="%SWFPATH%/panos/zyg/19.tiles/pano_%s.jpg" />
 		</image>
-		<hotspot name="spot2" style="skin_hotspotstyle" ath="140.156" atv="4.905" linkedscene="scene_18" text="南边 购物中心" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="../hotspot/imsges/new_spotd1_gif.png" />
+		<hotspot name="spot2" style="skin_hotspotstyle" ath="140.156" atv="4.905" linkedscene="scene_18" text="南边 购物中心" onloaded="do_crop_animation(128,128, 40);add_all_the_time_tooltip_for_VR()" url="%SWFPATH%/hotspot/imsges/new_spotd1_gif.png" />
 
 	</scene>
 
-<layer name="map" url="../skin/zgy.png" keep="true" handcursor="false" capture="false"
-	       align="righttop" ox="-10" oy="40"
-	       scale="0.25" scalechildren="true"
-	       onclick="openmap();"
-	       >
+  <!-- 雷达图 -->
+  <layer name="map" url="%SWFPATH%/skin/zgy.png" keep="true" handcursor="false" capture="false" bgshadow="0 0 0 16 0x000000 0.3" align="righttop" ox="-16" oy="16" scale="0.25" scalechildren="true" onclick="openmap();">
+  <!-- 雷达 (也覆盖在地图点上, 但在激活点图像后面) -->
+    <layer name="radar" 
+    url.flash="%SWFPATH%/plugins/radar.swf"
+    url.html5="%SWFPATH%/plugins/radar.js"
+    align="lefttop" edge="center" zorder="1"
+    scale.mobile="1.5"
+    fillalpha="0.5" fillcolor="0x7F5F3F"
+    linewidth="1.0" linecolor="0xE0E0A0" linealpha="0.5"
+    />
+  
+    <!-- 地图点图像部分 url可以设置 用style来统一处理 所有layer都载入了一个名为mapspot的style，注意这里spot是由0开始，而不是由1开始的，因此在一般情况下，地图点与场景一一对应，而场景的index是从0开始的，所以我们可以利用这一点提高代码的可读性 -->
+  
+    <layer name="spot0" style="mapspot" x="182" y="312" zorder="1" text="北边正门" onclick="mapspot_loadscene();" />
+    <layer name="spot6" style="mapspot" x="232" y="422" zorder="1" text="北边 餐厅" onclick="mapspot_loadscene();" />
+    <layer name="spot7" style="mapspot" x="682" y="176" zorder="1" text="洗手间" onclick="mapspot_loadscene();" />  
+    <layer name="spot5" style="mapspot" x="582" y="380" zorder="1" text="北边大厅" onclick="mapspot_loadscene();" />
 
-		<!-- 雷达 (也覆盖在地图点上, 但在激活点图像后面) -->
-		<layer name="radar" 
-		       url.flash="%SWFPATH%/plugins/radar.swf"
-		       url.html5="%SWFPATH%/plugins/radar.js"
-		       align="lefttop" edge="center" zorder="1"
-		       scale.mobile="1.5"
-		       fillalpha="0.5" fillcolor="0x7F5F3F"
-		       linewidth="1.0" linecolor="0xE0E0A0" linealpha="0.5"
-		       />
- 
-       	<!-- 地图点图像部分 url可以设置 用style来统一处理 所有layer都载入了一个名为mapspot的style，注意这里spot是由0开始，而不是由1开始的，因此在一般情况下，地图点与场景一一对应，而场景的index是从0开始的，所以我们可以利用这一点提高代码的可读性 -->
-	
-		<layer name="spot0" style="mapspot" x="182" y="312" zorder="1" text="北边正门" onclick="mapspot_loadscene();" />
-		<layer name="spot6" style="mapspot" x="232" y="422" zorder="1" text="北边 餐厅" onclick="mapspot_loadscene();" />
-		<layer name="spot7" style="mapspot" x="682" y="176" zorder="1" text="洗手间" onclick="mapspot_loadscene();" />  
-		<layer name="spot5" style="mapspot" x="582" y="380" zorder="1" text="北边大厅" onclick="mapspot_loadscene();" />
-
-		<!-- 激活点图像 (覆盖在普通的地图点上) -->
-		<layer name="activespot" url="../skin/loc_cur.png" align="lefttop" edge="center" zorder="2" scale.mobile="2" />
- 
+    <!-- 激活点图像 (覆盖在普通的地图点上) -->
+    <layer name="activespot" url="%SWFPATH%/skin/loc_cur.png" align="lefttop" edge="center" zorder="2" scale.mobile="2" />
+    
 	</layer>
  
 </krpano>

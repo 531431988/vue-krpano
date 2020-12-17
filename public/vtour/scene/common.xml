@@ -6,11 +6,11 @@
 		if(startactions !== null, startactions() );
 	</action>
 
-  <include url="../skin/vtourskin.xml" />
-  <include url="../skin/hotspot_skin.xml" />
-  <include url="../plugins/contextmenu.xml" />
-  <include url="../plugins/anihotspots.xml" />
-  <include url="../plugins/radar.xml" />
+  <include url="%SWFPATH%/skin/vtourskin.xml" />
+  <include url="%SWFPATH%/skin/hotspot_skin.xml" />
+  <include url="%SWFPATH%/plugins/contextmenu.xml" />
+  <include url="%SWFPATH%/plugins/anihotspots.xml" />
+  <include url="%SWFPATH%/plugins/radar.xml" />
 
   
 </krpano>

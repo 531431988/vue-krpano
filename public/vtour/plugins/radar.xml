@@ -1,6 +1,6 @@
 <krpano>
 
-	<style name="mapspot"  url="../skin/loc.png"  align="lefttop" edge="center" scale.mobile="2" />
+	<style name="mapspot"  url="%SWFPATH%/skin/loc.png"  align="lefttop" edge="center" scale.mobile="2" />
  
 	<!-- 地图打开部分 - 缩放到100% (如果屏幕小的话则可能更小) -->
 	<action name="openmap">
@@ -70,7 +70,15 @@
 			  );
 				
 		  );
+    scene_change()
 	</action>
+
+  <!-- 场景切换事件 -->
+  <action name="scene_change" type="Javascript">
+  <![CDATA[
+    changeScene(krpano)
+  ]]>
+  </action>
  
  
  

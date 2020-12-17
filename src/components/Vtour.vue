@@ -99,6 +99,7 @@ export default {
     this.createPano()
     // 切换场景
     window.changeScene = krpano => {
+      console.log('场景切换了')
       this.createHotSpot()
       this.$emit('change', krpano)
     }
