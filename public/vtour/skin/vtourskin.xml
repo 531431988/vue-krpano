@@ -33,7 +33,7 @@
 	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
 	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
 	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
-	               loadingtext="全景载入中..."
+	               loadingtext=""
                  layout_width="100%"
 	               layout_maxwidth=""
 	               controlbar_width="100%"

@@ -1,4 +1,7 @@
 <krpano>
+  <include url="%SWFPATH%/plugins/loadingpercenttext.xml" />
+  <include url="%SWFPATH%/plugins/loadingbar.xml" />
+  
 	<!-- 第一屏小行星载入 -->
 	<action name="startup" autorun="onstart">
 		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
