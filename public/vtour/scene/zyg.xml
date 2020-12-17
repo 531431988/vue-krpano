@@ -1,4 +1,4 @@
-﻿<krpano version="1.19" title="中馆驿服务区" logkey="true" showerrors="true" debugmode="false">
+﻿<krpano version="1.20.9" title="中馆驿服务区" logkey="true" showerrors="true" debugmode="false">
 
   <include url="%SWFPATH%/scene/common.xml" />
 

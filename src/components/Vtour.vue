@@ -59,6 +59,8 @@ export default {
           onready: krpano => {
             this.krpano = krpano
             this.createHotSpot()
+            krpano.set('autorotate.waittime', '5')
+            krpano.call('switch(autorotate.enabled)')
             this.$emit('init', this.krpano)
           }
         })
