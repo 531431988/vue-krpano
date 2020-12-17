@@ -58,9 +58,10 @@ export default {
           // 准备就绪回调函数
           onready: krpano => {
             this.krpano = krpano
-            this.createHotSpot()
+            krpano.set('autorotate.speed', '1')
             krpano.set('autorotate.waittime', '5')
             krpano.call('switch(autorotate.enabled)')
+            this.createHotSpot()
             this.$emit('init', this.krpano)
           }
         })
